@@ -13,7 +13,7 @@ const CourseTiles=()=>{
             </div>
             <div className=" flex  flex-col h-12 w-72 bg-white border-solid  rounded  border-2 ">
                 <h3 className="mx-auto">Data Structure Theory</h3>
-                <p className="mx-auto text-xs"><PersonIcon sx={{ fontSize: 14 }} className="mb-1 mr-1"/>Vahab</p>
+                <p className="mx-auto text-xs"><PersonIcon sx={{ fontSize: 14 }} className="mb-1 mr-1"/>Xavier</p>
             </div>
             <button className="text-xs my-auto text-red-400"> View class</button>
         </div>

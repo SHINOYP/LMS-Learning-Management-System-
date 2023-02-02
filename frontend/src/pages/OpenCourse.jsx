@@ -1,5 +1,8 @@
 import { useEffect,useState } from "react";
-import OpenCourseDetails from "../componets/OpenCourseDetails"
+import OpenCourseDetails from "../componets/OpenCourseDetails";
+import AddIcon from '@mui/icons-material/Add';
+import AddNewCourse from "./teach/AddNewCourse";
+import { Link } from "react-router-dom";
 
 //componets
 import ChapterSections from "../componets/chapterSections";
@@ -21,6 +24,7 @@ const OpenCourse=()=>{
     },[])
     return(
         <div>
+            <Link className=" text-xs font-bold text-red-400" to='/AddnewCourse'><AddIcon/> Add Chapter</Link> 
              <div className="">
                 {chapters && chapters.map((chapter)=>(
                     <OpenCourseDetails key={chapter._id} chapter={chapter}/>

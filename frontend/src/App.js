@@ -16,7 +16,7 @@ import Footer from './componets/Footer';
 function App() {
   const Location=useLocation();
   //array of excluded objects;
-  const excludedRoutes=['/login'];
+  const excludedRoutes=['/login','/Signup'];
   
   return (
     <div className="App flex justify-between">

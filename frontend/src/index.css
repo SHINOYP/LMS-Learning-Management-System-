@@ -9,6 +9,9 @@ body {
   font-family: 'Inter', sans-serif;
   font-family: 'Lato', sans-serif;
   font-family: 'Roboto', sans-serif;
+  font-family: 'Fira Code', monospace;
+
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(228, 228, 228);
@@ -29,4 +32,16 @@ code {
   background-color: rgb(121, 165, 182);
   border-radius: 24px;
 
+}
+
+.login{
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  font-family: 'Itim', cursive;
+}
+
+.field{
+  width: 407px;
+  height: 60px;
 }

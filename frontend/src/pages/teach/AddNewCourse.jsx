@@ -34,17 +34,17 @@ const AddNewCourse=()=>{
 
 
     return(
-        <div>
-            <form className="create" onSubmit={handleSubmit}>
-                <h2>add new chapter</h2> 
-                <label>input title</label>
+        <div className=" flex items-center justify-center ">
+            <form className="flex flex-col" onSubmit={handleSubmit}>
+                <h2 className="mx-auto">add new chapter</h2> 
+                <label className="mt-10">Input title</label>
                 <input 
                     type="text"
                     onChange={(e)=> setTitle(e.target.value)}
                     value={title}
                 
                 />
-                <button>add me</button>
+                <button className=" mt-10 bg-sky-500 rounded-xl hover:bg-sky-900">add me</button>
             {error && <div>{error}</div>}
             </form>
 

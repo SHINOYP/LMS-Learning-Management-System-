@@ -12,7 +12,7 @@ const DashCourseTile=()=>{
                     <img src={Spider} className=" ml-6 my-6 rounded-xl w-16 h-16"></img>
                     <div className="flex flex-col">
                         <h3 className="ml-4 mt-6">Machine Learning</h3>
-                        <p className="ml-4 mt-4 flex items-center text-xs"><PersonIcon />Jiji lal</p>
+                        <p className="ml-4 mt-4 flex items-center text-xs"><PersonIcon />Alexander</p>
                     </div>
             </div>
             <div className=" flex  flex-col h-24 w-72 bg-white border  border-2  ">
