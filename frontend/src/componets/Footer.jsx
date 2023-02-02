@@ -2,7 +2,7 @@ import { Link ,NavLink} from "react-router-dom";
 import Calendar from "./Calendar";
 
 
-const Footer=()=>{
+const footer=()=>{
     return(
         <div className="text-white ">
             <Link to='/'>
@@ -22,4 +22,4 @@ const Footer=()=>{
 }
 
 
-export default Footer;
+export default footer;

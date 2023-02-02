@@ -1,4 +1,4 @@
-import {BrowserRouter ,Routes,Route} from 'react-router-dom';
+import {Routes,Route,useLocation} from 'react-router-dom';
 
 //pages and componets
 import Dashboard from './pages/Dashboard';
@@ -14,49 +14,56 @@ import Navbar from './componets/Navbar';
 import Footer from './componets/Footer';
 
 function App() {
+  const Location=useLocation();
+  //array of excluded objects;
+  const excludedRoutes=['/login'];
+  
   return (
     <div className="App flex justify-between">
      
-      <Navbar/>
+      {! excludedRoutes.includes(Location.pathname) && <Navbar/>}
        <div className='pages'>
         <Routes>
           <Route
-          path="/"
-          element={<Dashboard/>}
+            path="/Dashboard"
+            element={<Dashboard/>}
           />
-          < Route path="/login" element={<Login/>} />
-         
+          <Route 
+            path="/login"
+            element={<Login/>}
+           /> 
           <Route
-          path="/Signup"
-          element={<Signup/>}
-          />
-          <Route
-          path='/Courses'
-          element={<Courses/>}
+            path="/Signup"
+            element={<Signup/>}
           />
           <Route
-          path='/Chat'
-          element={<Chat/>}
+            path='/Courses'
+            element={<Courses/>}
           />
           <Route
-          path='/Meet'
-          element={<Meet/>}
+            path='/Chat'
+            element={<Chat/>}
           />
           <Route
-          path="/OpenCourse"
-          element={<OpenCourse/>}
+            path='/Meet'
+            element={<Meet/>}
+          />
+          <Route
+            path="/OpenCourse"
+            element={<OpenCourse/>}
           />
           <Route
           path="/Todo"
           element={<Todo/>}
           />
           <Route
-          path="/AddnewCourse"
-          element={<AddNewCourse/>}
+            path="/AddnewCourse"
+            element={<AddNewCourse/>}
           />
         </Routes>
        </div>
-       <Footer/>
+
+       {!excludedRoutes.includes(Location.pathname) && <Footer/>}
     </div>
   );
 }

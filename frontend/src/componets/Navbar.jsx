@@ -10,7 +10,7 @@ const Navbar=()=>{
     return(
         <div className=" "> 
         
-        <Link to="/">
+        
              <header className="font-semibold bg-slate-50 w-60 text-stone-700  sticky top-0  text-lg   rounded-xl" style={{height:"100vh" }}>
                     <nav className=" flex  flex-col">
                         <div className="flex flex-col ">
@@ -25,7 +25,7 @@ const Navbar=()=>{
                         </div>
                     </nav>
              </header>
-        </Link>
+        
 
         </div>
     )
