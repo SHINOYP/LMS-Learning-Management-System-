@@ -1,13 +1,20 @@
 import { useState } from "react"
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 
 
 const AddNewCourse=()=>{
     const [title,setTitle]=useState('');
     const [error,setError]=useState('');
+    const {user}=useAuthContext()
 
     const handleSubmit= async(e)=>{
         e.preventDefault()
+
+        if(!user){
+            setError('you must be logged in')
+            return
+        }
 
         const chapter={title}
 
@@ -15,7 +22,8 @@ const AddNewCourse=()=>{
             method:'POST',
             body:JSON.stringify(chapter),
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'Authorization':`Bearer ${user.token}`
             }
                 
         })

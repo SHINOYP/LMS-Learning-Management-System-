@@ -1,6 +1,7 @@
 import {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link,Navigate} from 'react-router-dom';
 import{useLogin} from '../hooks/useLogin';
+import {useAuthContext} from '../hooks/useAuthContext'
 
 
 
@@ -9,19 +10,21 @@ const Login=()=>{
     const [email ,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const  {login,error,isLoading} =useLogin()
-    const navigate=useNavigate();
+    const {user}=useAuthContext()
 
     const handleSubmit=async(e)=>{
         e.preventDefault()
 
         await login(email,password)
-        navigate("/Dashboard")
 
         
     }
     
     return(
         <div className="login text-white flex flex-col items-center justify-center ">
+        {user && (
+          <Navigate to="/dashboard" replace={true} />
+        )}
         <form className='flex flex-col' onSubmit={handleSubmit}>
             <h3 className='mx-auto mb-14 font-medium text-4xl'>Log in</h3>
             
@@ -51,7 +54,7 @@ const Login=()=>{
             {error && <div>{error}</div>}
 
         </form>
-        <span className='mt-10'>Don't have an account? <Link to={'/Signup'} className="text-blue-400">Sign Up</Link></span>
+        <span className='mt-10'>Don't have an account? <Link to={'/signup'} className="text-blue-400">Sign Up</Link></span>
         </div>
     )
 }

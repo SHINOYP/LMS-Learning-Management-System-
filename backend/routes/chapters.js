@@ -6,8 +6,11 @@ const { createChapters,
         updateChapter
  } = require('../contollers/chaptersController');
 
+ const requireAuth=require('../middleware/requireAuth')
 const router=express.Router()
 
+//require auth for all workout routes
+router.use(requireAuth)
 
 //GET all chapters
 router.get('/',getChapters)

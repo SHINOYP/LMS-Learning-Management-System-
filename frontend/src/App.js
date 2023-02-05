@@ -1,4 +1,5 @@
-import {Routes,Route,useLocation} from 'react-router-dom';
+import {Routes,Route,useLocation,Navigate} from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
 
 //pages and componets
 import Dashboard from './pages/Dashboard';
@@ -15,8 +16,9 @@ import Footer from './componets/Footer';
 
 function App() {
   const Location=useLocation();
+  const {user}=useAuthContext();
   //array of excluded objects;
-  const excludedRoutes=['/login','/Signup'];
+  const excludedRoutes=['/login','/signup'];
   
   return (
     <div className="App flex justify-between">
@@ -25,40 +27,44 @@ function App() {
        <div className='pages'>
         <Routes>
           <Route
+            path='/'
+            element={user ? <Dashboard/> : <Navigate to='/login'/>}
+          />
+          <Route
             path="/Dashboard"
-            element={<Dashboard/>}
+            element={user ? <Dashboard/> : <Navigate to='/login'/>}
           />
           <Route 
-            path="/login"
-            element={<Login/>}
+           path="/login"
+            element={!user ?<Login/> :<Navigate to='/Dashboard' />}
            /> 
           <Route
-            path="/Signup"
-            element={<Signup/>}
+            path="/signup"
+            element={!user ? <Signup/> :<Navigate to='/Dashboard' />}
           />
           <Route
             path='/Courses'
-            element={<Courses/>}
+            element={user ? <Courses/> : <Navigate to='/login'/>}
           />
           <Route
             path='/Chat'
-            element={<Chat/>}
+            element={user ? <Chat/> : <Navigate to='/login'/>}
           />
           <Route
             path='/Meet'
-            element={<Meet/>}
+            element={user ? <Meet/> : <Navigate to='/login'/>}
           />
           <Route
             path="/OpenCourse"
-            element={<OpenCourse/>}
+            element={user ? <OpenCourse/> : <Navigate to='/login'/>}
           />
           <Route
           path="/Todo"
-          element={<Todo/>}
+          element={user ? <Todo/> : <Navigate to='/login'/>}
           />
           <Route
             path="/AddnewCourse"
-            element={<AddNewCourse/>}
+            element={user ? <AddNewCourse/> : <Navigate to='/login'/>}
           />
         </Routes>
        </div>
