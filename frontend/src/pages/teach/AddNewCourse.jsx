@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useChapterContext } from "../../hooks/useChapterContext";
 
 
 
@@ -7,6 +8,7 @@ const AddNewCourse=()=>{
     const [title,setTitle]=useState('');
     const [error,setError]=useState('');
     const {user}=useAuthContext()
+    const {dispatch}=useChapterContext();
 
     const handleSubmit= async(e)=>{
         e.preventDefault()
@@ -36,6 +38,7 @@ const AddNewCourse=()=>{
             setTitle('')
             setError(null)
             console.log('new chapter added',json)
+            dispatch({type:'CREATE_CHAPTERS',payload:json})
         }
     }
     

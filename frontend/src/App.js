@@ -1,6 +1,6 @@
 import {Routes,Route,useLocation,Navigate} from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
-
+import { useEffect } from 'react';
 //pages and componets
 import Dashboard from './pages/Dashboard';
 import Courses from "./pages/Courses";
@@ -19,7 +19,14 @@ function App() {
   const {user}=useAuthContext();
   //array of excluded objects;
   const excludedRoutes=['/login','/signup'];
-  
+
+  //clear local storage when use exits the tab
+  useEffect(() => {
+    window.onbeforeunload = function() {
+      localStorage.clear('user');
+   }
+    
+  });
   return (
     <div className="App flex justify-between">
      
@@ -40,7 +47,7 @@ function App() {
            /> 
           <Route
             path="/signup"
-            element={!user ? <Signup/> :<Navigate to='/Dashboard' />}
+            element={!user ? <Signup/> :<Navigate to='/login' />}
           />
           <Route
             path='/Courses'

@@ -46,7 +46,7 @@ const Signup=()=>{
                 
             <button disabled={isLoading} className='bg-sky-600 hover:bg-sky-400 rounded-xl mt-10 ml-2 text-white text-xl' style={{width:'390px' ,height:'58px'}}>Signup</button>
             {error && <div>{error}</div>}
-            <span className='mt-10 mx-auto'> Have an account ! <Link to={'/login'} className="text-blue-400">Sign Up</Link></span>
+            <span className='mt-10 mx-auto'> Have an account ! <Link to={'/login'} className="text-blue-400">log in</Link></span>
         </form>
 
         </div>

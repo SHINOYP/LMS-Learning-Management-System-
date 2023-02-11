@@ -4,7 +4,7 @@ const jwt=require('jsonwebtoken')
 
 //create token structure
 const createToken = (_id)=>{
-    return jwt.sign({_id:_id},process.env.SECRET,{expiresIn:'3d'})
+    return jwt.sign({_id:_id},process.env.SECRET,{expiresIn:'10m'})
 
 }
 

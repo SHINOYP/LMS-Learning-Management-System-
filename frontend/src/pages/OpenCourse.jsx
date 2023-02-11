@@ -1,16 +1,14 @@
-import { useEffect,useState } from "react";
+import { useEffect } from "react";
 import OpenCourseDetails from "../componets/OpenCourseDetails";
 import AddIcon from '@mui/icons-material/Add';
-import AddNewCourse from "./teach/AddNewCourse";
 import { Link } from "react-router-dom";
 import {useAuthContext} from '../hooks/useAuthContext'
+import { useChapterContext } from "../hooks/useChapterContext";
 
-//componets
-import ChapterSections from "../componets/chapterSections";
 
 
 const OpenCourse=()=>{
-    const [chapters,setChapters] = useState(null)
+    const {chapters,dispatch}=useChapterContext()
     const {user}=useAuthContext()
 
     useEffect(()=>{
@@ -23,7 +21,7 @@ const OpenCourse=()=>{
             const json = await response.json()
             
             if(response.ok){
-                setChapters(json)
+                dispatch({type:'SET_CHAPTERS',payload:json})
             }
         }
         if(user){

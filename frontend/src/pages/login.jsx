@@ -17,7 +17,10 @@ const Login=()=>{
 
         await login(email,password)
 
-        
+        if(user){
+            <Navigate to="/dashboard" replace={true} />
+
+        } 
     }
     
     return(
