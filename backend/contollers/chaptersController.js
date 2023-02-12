@@ -36,10 +36,10 @@ const getchapter=async(req,res)=>{
 
 //create new chapters
 const createChapters= async (req,res)=>{
-    const {title}=req.body
+    const {title,units}=req.body
 
     try{
-        const  chapters = await Chapters.create({title})
+        const  chapters = await Chapters.create({title,units})
         res.status(200).json(chapters)
     }catch(err){
         console.log(err);

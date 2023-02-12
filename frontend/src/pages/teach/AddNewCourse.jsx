@@ -47,15 +47,15 @@ const AddNewCourse=()=>{
     return(
         <div className=" flex items-center justify-center ">
             <form className="flex flex-col" onSubmit={handleSubmit}>
-                <h2 className="mx-auto">add new chapter</h2> 
-                <label className="mt-10">Input title</label>
+                <h2 className="mx-auto">Add new Course</h2> 
+                <label className="mt-10">Input Course Name</label>
                 <input 
                     type="text"
                     onChange={(e)=> setTitle(e.target.value)}
                     value={title}
                 
                 />
-                <button className=" mt-10 bg-sky-500 rounded-xl hover:bg-sky-900">add me</button>
+                <button className=" mt-10 bg-sky-500 rounded-xl hover:bg-sky-900">Add Course</button>
             {error && <div>{error}</div>}
             </form>
 

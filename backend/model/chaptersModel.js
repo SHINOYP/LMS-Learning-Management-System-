@@ -6,7 +6,13 @@ const chaptersSchema=new Schema({
     title:{
         type:String,
         required:true
-    }  
+    },
+   units:[
+    { 
+        type:String,
+        required:true
+    }
+   ]   
 
 },{timestamps:true})
 
