@@ -26,7 +26,7 @@ const Courses=()=>{
         if(user){
             fetchChapters()
         }
-    },[user])
+    },[dispatch,user])
     
     return(
         <>
@@ -41,7 +41,7 @@ const Courses=()=>{
                     <CourseTiles key={chapter._id} chapter={chapter}/>
                         
                 ))}
-          
+           {console.log(chapters)}
         </div>
         </>
     )

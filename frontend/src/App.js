@@ -8,6 +8,7 @@ import Chat  from './pages/Chat';
 import Meet from "./pages/Meet";
 import Todo from "./pages/Todo";
 import AddNewCourse from './pages/teach/AddNewCourse';
+import AddNewModule from './pages/teach/AddNewModule';
 import OpenCourse from './pages/OpenCourse';
 import Login from './pages/login';
 import Signup from './pages/signup';
@@ -47,7 +48,7 @@ function App() {
            /> 
           <Route
             path="/signup"
-            element={!user ? <Signup/> :<Navigate to='/login' />}
+            element={<Signup/>}
           />
           <Route
             path='/Courses'
@@ -72,6 +73,10 @@ function App() {
           <Route
             path="/AddnewCourse"
             element={user ? <AddNewCourse/> : <Navigate to='/login'/>}
+          />
+          <Route
+            path="/AddNewModule"
+            element={user ? <AddNewModule/> : <Navigate to='/login'/>}
           />
         </Routes>
        </div>

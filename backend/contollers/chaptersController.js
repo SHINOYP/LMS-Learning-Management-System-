@@ -7,7 +7,8 @@ const mongoose=require('mongoose');
 
 // get all chapters
 const getChapters=async(req,res)=>{
-    const chapters=await Chapters.find({}).sort({createdAt:-1})
+    const user_id=req.user._id
+    const chapters=await Chapters.find({ user_id }).sort({createdAt:-1})
 
     res.status(200).json(chapters);
 }
@@ -39,7 +40,8 @@ const createChapters= async (req,res)=>{
     const {title,units}=req.body
 
     try{
-        const  chapters = await Chapters.create({title,units})
+        const user_id=req.user._id
+        const  chapters = await Chapters.create({title,units,user_id})
         res.status(200).json(chapters)
     }catch(err){
         console.log(err);
@@ -47,8 +49,6 @@ const createChapters= async (req,res)=>{
     }
     
 }
-
-//upload image
 
 
 
@@ -93,6 +93,7 @@ const deleteChapter=async(req,res)=>{
 
     res.status(200).json(chapters)
 }
+
 
 
 

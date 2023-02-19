@@ -6,10 +6,12 @@ import PersonIcon from '@mui/icons-material/Person';
 const CourseTiles=(props)=>{
 
     const chapterd= {
+        _id:props.chapter._id,
         title: props.chapter.title,
         units:props.chapter.units
 
       };
+    
     return(
 
         <Link to="/OpenCourse" state={chapterd} >
@@ -24,9 +26,10 @@ const CourseTiles=(props)=>{
             <button className="text-xs my-auto text-red-400"> View class</button>
         </div>
         </Link>
-        
+         
         
     )
+    
 }
 
 export default CourseTiles;

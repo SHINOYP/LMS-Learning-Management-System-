@@ -10,15 +10,14 @@ const Signup=()=>{
     const {user}=useAuthContext();
 
     const handleSubmit=async(e)=>{
-        e.preventDefault()
+        
 
         await signup(email,password)
+      
+        
     }
     return(
         <div className="login text-white flex items-center justify-center ">
-        {user && (
-          <Navigate to="/login" replace={true} />
-        )}
         <form className='flex flex-col' onSubmit={handleSubmit}>
             <h3 className='mx-auto mb-14 font-medium text-4xl'>Sign Up</h3>
             

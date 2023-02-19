@@ -3,7 +3,8 @@ const { createChapters,
         getChapters,
         getchapter,
         deleteChapter,
-        updateChapter
+        updateChapter,
+        createModule
  } = require('../contollers/chaptersController');
 
  const requireAuth=require('../middleware/requireAuth')
@@ -21,10 +22,6 @@ router.get('/:id',getchapter)
 
 //POST A NEW chapters || using req u can access data
 router.post('/',createChapters)
-
-
-//image
-
 
 
 //Delete a  chapter

@@ -3,7 +3,12 @@ require('dotenv').config()
 const express=require('express')
 const mongoose=require('mongoose')
 const chaptersRoutes=require('./routes/chapters')
+const moduleRoutes=require('./routes/module')
 const userRoutes=require('./routes/user')
+const path=require('path');
+const fileRoutes=require('./routes/file')
+
+
 
 //express app created 
 const app=express()
@@ -26,12 +31,19 @@ app.use((req,res,next)=>{
 
 
 //route handler
+
 app.use('/api/chapters',chaptersRoutes)
+app.use('/api/module',moduleRoutes)
 app.use('/api/user',userRoutes)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use('/api', fileRoutes.routes);
 
 
 //connect to db
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI,{
+
+})
     .then(()=>{
         //listen for requests
         app.listen(process.env.PORT,()=>{

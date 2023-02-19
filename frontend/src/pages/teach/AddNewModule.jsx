@@ -1,15 +1,17 @@
 import { useState } from "react"
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useChapterContext } from "../../hooks/useChapterContext";
+import { useLocation } from "react-router-dom";
+import { useModuleContext } from "../../hooks/useModuleContext";
 
-
-
-const AddNewCourse=()=>{
-    const [title,setTitle]=useState('');
+const AddNewModule=()=>{
+    const location = useLocation();
+    const propsData = location.state;
+    const {_id}=propsData;
     const [units,setUnits]=useState('');
     const [error,setError]=useState('');
     const {user}=useAuthContext()
-    const {dispatch}=useChapterContext();
+    const {dispatch}=useModuleContext()
+    
 
     const handleSubmit= async(e)=>{
         e.preventDefault()
@@ -19,9 +21,9 @@ const AddNewCourse=()=>{
             return
         }
 
-        const chapter={title,units}
+        const chapter={_id,units}
 
-        const response =await fetch("http://localhost:4000/api/chapters/",{
+        const response =await fetch("http://localhost:4000/api/module/",{
             method:'POST',
             body:JSON.stringify(chapter),
             headers:{
@@ -34,14 +36,16 @@ const AddNewCourse=()=>{
 
         if(!response.ok){
             setError(json.error)
+            
         }
         if(response.ok){
-            setTitle('')
             setUnits('')
             setError(null)
-            console.log('new chapter added',json)
-            dispatch({type:'CREATE_CHAPTERS',payload:json})
+            console.log('new module added',json)
+            console.log(JSON.stringify(json))
+            dispatch({type:'CREATE_MODULE',payload:json})
         }
+
     }
     
 
@@ -49,28 +53,22 @@ const AddNewCourse=()=>{
     return(
         <div className=" flex items-center justify-center ">
             <form className="flex flex-col" onSubmit={handleSubmit}>
-                <h2 className="mx-auto">Add new Course</h2> 
-                <label className="mt-10">Input Course Name</label>
-                <input 
-                    type="text"
-                    onChange={(e)=> setTitle(e.target.value)}
-                    value={title}
-                
-                />
+                <h2 className="mx-auto">Add new Module</h2> 
+                <label className="mt-10">Input Module name</label>
                  <input 
                     type="text"
                     onChange={(e)=> setUnits(e.target.value)}
                     value={units}
                 
                 />
-               
-                <button className=" mt-10 bg-sky-500 rounded-xl hover:bg-sky-900">Add Course</button>
+                <button className=" mt-10 bg-sky-500 rounded-xl hover:bg-sky-900">Add Module</button>
             {error && <div>{error}</div>}
             </form>
+            
 
         </div>
     )
 }
 
 
-export default AddNewCourse;
+export default AddNewModule;
