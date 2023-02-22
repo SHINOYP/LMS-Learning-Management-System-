@@ -4,10 +4,10 @@ import { useEffect } from 'react';
 //pages and componets
 import Dashboard from './pages/Dashboard';
 import Courses from "./pages/Courses";
+import Profile from "./pages/Profile"
 import Chat  from './pages/Chat';
 import Meet from "./pages/Meet";
 import Todo from "./pages/Todo";
-import AddNewCourse from './pages/teach/AddNewCourse';
 import AddNewModule from './pages/teach/AddNewModule';
 import OpenCourse from './pages/OpenCourse';
 import Login from './pages/login';
@@ -19,7 +19,7 @@ function App() {
   const Location=useLocation();
   const {user}=useAuthContext();
   //array of excluded objects;
-  const excludedRoutes=['/login','/signup'];
+  const excludedRoutes=['/login','/signup','/profile'];
 
   //clear local storage when use exits the tab
   useEffect(() => {
@@ -50,6 +50,11 @@ function App() {
             path="/signup"
             element={<Signup/>}
           />
+           <Route
+            path='/profile'
+            element={user ? <Profile/> : <Navigate to='/login'/>}
+          />
+          
           <Route
             path='/Courses'
             element={user ? <Courses/> : <Navigate to='/login'/>}
@@ -69,10 +74,6 @@ function App() {
           <Route
           path="/Todo"
           element={user ? <Todo/> : <Navigate to='/login'/>}
-          />
-          <Route
-            path="/AddnewCourse"
-            element={user ? <AddNewCourse/> : <Navigate to='/login'/>}
           />
           <Route
             path="/AddNewModule"

@@ -8,7 +8,7 @@ const Dashboard =()=>{
     return(
         <div className="DASHBOARD  " >
             <h2 className="ml-4 my-4 text-xl font-bold">Dashboard</h2>
-            <div className="flex border rounded-xl   ">
+            <div className="flex border rounded-xl  flex-wrap  ">
                <DashCourseTile/>
                <DashCourseTile/>
                <DashCourseTile/>
@@ -18,7 +18,7 @@ const Dashboard =()=>{
                 
             </div>
             
-            <div className="flex border rounded-xl   ">
+            <div className="flex border rounded-xl flex-wrap  ">
                 <DashCourseTile/>
                 <DashCourseTile/>
                 <DashCourseTile/>

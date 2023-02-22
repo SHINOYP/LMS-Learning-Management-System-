@@ -45,3 +45,18 @@ code {
   width: 407px;
   height: 60px;
 }
+input[type=email] {
+ 
+  padding: 12px 20px;
+
+}
+input[type=text] {
+ 
+  padding: 12px 20px;
+
+}
+input[type=password] {
+ 
+  padding: 12px 20px;
+
+}

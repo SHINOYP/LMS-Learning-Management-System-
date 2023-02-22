@@ -25,7 +25,7 @@ const OpenCourse=()=>{
         <div>
             
              <div className="">
-             <Link className=" my-4 text-xs font-bold text-red-400" to='/AddNewModule' state={moduleAdd}><AddIcon/> Add Course</Link> 
+             <Link className=" my-4 text-xs font-bold text-red-400" to='/AddNewModule' state={moduleAdd}><AddIcon/> Add Chapter</Link> 
                 
                 {module && module.map((unit)=>(
                     <OpenCourseDetails unit={unit}/>
