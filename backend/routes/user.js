@@ -1,10 +1,12 @@
 const express=require('express')
 
+
 //controller fundtions
 
 const { loginUser,
-        signUpUser} = require('../contollers/userController')
-
+        signUpUser,
+        updateProfile} = require('../contollers/userController')
+const{upload}=require('../helper/filehelper')
 
 const router =express.Router()
 
@@ -18,5 +20,8 @@ router.post('/login',loginUser)
 
 //signup route
 router.post('/signup',signUpUser)
+
+
+router.post("/Profile", upload.single('avatar'),updateProfile)
 
 module.exports=router

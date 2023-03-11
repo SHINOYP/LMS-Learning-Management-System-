@@ -8,7 +8,7 @@ import Profile from "./pages/Profile"
 import Chat  from './pages/Chat';
 import Meet from "./pages/Meet";
 import Todo from "./pages/Todo";
-import AddNewModule from './pages/teach/AddNewModule';
+import AddNewModule from '../src/componets/teach/AddNewModule';
 import OpenCourse from './pages/OpenCourse';
 import Login from './pages/login';
 import Signup from './pages/signup';
@@ -20,16 +20,17 @@ function App() {
   const {user}=useAuthContext();
   //array of excluded objects;
   const excludedRoutes=['/login','/signup','/profile'];
+  const excludedRoute=['/profile'];
 
   //clear local storage when use exits the tab
-  useEffect(() => {
-    window.onbeforeunload = function() {
-      localStorage.clear('user');
-   }
+  // useEffect(() => {
+  //   window.onbeforeunload = function() {
+  //     localStorage.clear('user');
+  //  }
     
-  });
+  // });
   return (
-    <div className="App flex justify-between">
+    <div className="App flex justify-between  mx-auto" >
      
       {! excludedRoutes.includes(Location.pathname) && <Navbar/>}
        <div className='pages'>

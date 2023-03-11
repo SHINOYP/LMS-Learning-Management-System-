@@ -7,8 +7,11 @@ const { createChapters,
         createModule
  } = require('../contollers/chaptersController');
 
- const requireAuth=require('../middleware/requireAuth')
+const requireAuth=require('../middleware/requireAuth')
 const router=express.Router()
+const{upload}=require('../helper/filehelper')
+
+
 
 //require auth for all workout routes
 router.use(requireAuth)
@@ -21,12 +24,11 @@ router.get('/',getChapters)
 router.get('/:id',getchapter)
 
 //POST A NEW chapters || using req u can access data
-router.post('/',createChapters)
+router.post('/',upload.single('img'),createChapters)
 
 
 //Delete a  chapter
 router.delete('/:id', deleteChapter)
-
 
 
 //Update a chapter

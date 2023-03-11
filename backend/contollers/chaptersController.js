@@ -1,7 +1,6 @@
 const Chapters=require('../model/chaptersModel');
 const mongoose=require('mongoose');
-
-      
+const cloudinary=require('../helper/cloudinary')
 
 
 
@@ -37,14 +36,27 @@ const getchapter=async(req,res)=>{
 
 //create new chapters
 const createChapters= async (req,res)=>{
-    const {title,units}=req.body
+   
 
+    const title=req.body.title;
+    console.log(req.user)
     try{
         const user_id=req.user._id
-        const  chapters = await Chapters.create({title,units,user_id})
-        res.status(200).json(chapters)
+        if(req.file!==undefined){
+            const result=await  cloudinary.uploader.upload(req.file.path,{
+                public_id:`${title}_Course`
+                
+            })
+            const img=result.url
+            const  chapters_img = await Chapters.create({title,img,user_id})
+            res.status(200).json(chapters_img)
+        }else{
+            const  chapter = await Chapters.create({title,user_id})
+            res.status(200).json(chapter)
+        }
+       
     }catch(err){
-        console.log(err);
+        console.log(err)
 
     }
     
@@ -81,17 +93,26 @@ const updateChapter=async(req,res)=>{
 const deleteChapter=async(req,res)=>{
     const {id}=req.params
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:'no such id'})
+    try{
+        const public_id=`${req.body.title}_Course`
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(404).json({error:'no such id'})
+        }
+        const result= await cloudinary.uploader.destroy(public_id).then(result=>console.log(result));;
+        const chapters=await Chapters.findByIdAndDelete({_id: id})
+        
+        console.log(result)
+        if(!chapters){
+            return res.status(404).json({error:"no such workout"})
+        }
+
+        res.status(200).json(chapters)
+
+    }catch(err){
+        console.log(err)
     }
-
-    const chapters=await Chapters.findByIdAndDelete({_id: id})
-
-    if(!chapters){
-        return res.status(404).json({error:"no such workout"})
-    }
-
-    res.status(200).json(chapters)
+    
+    
 }
 
 

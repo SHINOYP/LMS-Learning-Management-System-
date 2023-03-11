@@ -60,3 +60,53 @@ input[type=password] {
   padding: 12px 20px;
 
 }
+th, td {
+  padding: 15px;
+}
+
+
+/* profile pic hover */
+
+div.profilecrl {
+  position: relative;
+  top: 20px;
+  height: 230px;
+  width: 230px;
+  border-radius: 99%;
+  background-color: rgb(130, 134, 130);
+  box-shadow: 10px 10px 35px -15px rgba(0,0,0,0.75);
+}
+
+div.profilecrl img {
+  position: absolute;
+  top: 0;
+  /* height: 240px;
+  width: 320px; */
+}
+
+div.profilecrl i {
+  color: white;
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  transform: scale(4)
+}
+
+div.profilecrl:hover img {
+  opacity: 0.4;
+  filter: grayscale(100%);
+}
+
+div.profilecrl * {
+  transition: all 0.35s ease-in-out;
+}
+
+div.profilecrl i {
+  transform: scale(0);
+}
+
+div.profilecrl:hover i {
+  transform: scale(3);
+  transition: transform 0.35s ease-in;
+}
+

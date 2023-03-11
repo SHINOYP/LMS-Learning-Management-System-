@@ -7,11 +7,30 @@ const chaptersSchema=new Schema({
         type:String,
         required:true
     },
-   units:[
-    { 
+    img: {
         type:String,
-        required:true
+        default:'null'
+    },
+   file:[
+    { 
+       title:{
+        type:String
+       },
+       link:{
+        type:String
+       } 
+        
     }
+   ],
+   links:[
+        {   
+            title:{
+                type:String
+            },
+            link:{
+                type:String
+            }
+        }
    ],
    user_id:{
     type:String,

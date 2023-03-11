@@ -1,6 +1,8 @@
 const UserModel=require('../model/userModel')
 const jwt=require('jsonwebtoken')
-
+const cloudinary=require('../helper/cloudinary')
+const userModel = require('../model/userModel');
+var mongoose = require('mongoose')
 
 //create token structure
 const createToken = (_id)=>{
@@ -19,8 +21,10 @@ const loginUser = async(req,res)=>{
 
         //create token  
         const token=createToken(user._id)
-
-        res.status(200).json({email,token})
+        const _id=(user._id)
+        const name=(user.name)
+        const avatar=(user.avatar)
+        res.status(200).json({name,avatar,_id,email,token})
     }catch(error){
         res.status(400).json({error:error.message})
     }
@@ -47,7 +51,39 @@ const signUpUser = async(req,res)=>{
 }
 
 
+
+//update user profile
+const updateProfile=  async(req,res)=>{
+
+    const id=req.body._id;
+    
+    console.log()
+    console.log(req.file.path)
+    try{
+        const result=await  cloudinary.uploader.upload(req.file.path,{
+            public_id:`${id}_profile`
+            
+        })
+
+        const user= await userModel.findByIdAndUpdate({_id: id},{
+            avatar:result.url
+        })
+        console.log(result.url)
+        console.log("saved to db")
+        res.status(200).json(user)
+        
+    }catch(error){
+        res.status(400).json({error:error.message})
+    }
+    
+
+}
+
+
+
+
 module.exports={
     loginUser,
-    signUpUser
+    signUpUser,
+    updateProfile,
 }

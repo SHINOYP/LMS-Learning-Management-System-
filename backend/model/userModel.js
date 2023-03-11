@@ -20,6 +20,10 @@ const UserSchema=new Schema({
         type:String,
         required:true
     
+    },
+    avatar: {
+        type:String,
+        default:'../uploads/uchiha.jpg'
     }
 })
 
@@ -76,6 +80,7 @@ UserSchema.statics.login=async function(email,password){
     if(!match){
         throw Error('Incorrect password')
     }
+    
 
     return user
 }

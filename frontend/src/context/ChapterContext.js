@@ -14,6 +14,11 @@ export const chapterReducer=( state , action )=>{
             return{
                 chapters:[action.payload, ...state.chapters]
             }
+
+        case 'DELETE_CHAPTERS':
+            return{
+                chapters: state.chapters.filter((c)=>c._id !== action.payload._id)
+            }
         default:
             return state
     }

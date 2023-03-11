@@ -1,16 +1,22 @@
 'use strict';
-const SingleFile = require('../model/singlefile');
+// const SingleFile = require('../model/singlefile');
 const MultipleFile = require('../model/multiplefile');
+const UserModel=require('../model/userModel')
 
 const singleFileUpload = async (req, res, next) => {
     try{
-        const file = new SingleFile({
-            fileName: req.file.originalname,
-            filePath: req.file.path,
-            fileType: req.file.mimetype,
-            fileSize: fileSizeFormatter(req.file.size, 2) // 0.00
+        
+        const file=JSON.parse(req.body)
+        var user_id = '63fcc64d8d9b35c26554b188';
+        UserModel.findByIdAndUpdate(user_id, { avatar: file },
+                                    function (err, docs) {
+            if (err){
+                console.log(err)
+            }
+            else{
+                console.log("Updated User : ", docs);
+            }
         });
-        await file.save();
         res.status(201).send('File Uploaded Successfully');
     }catch(error) {
         res.status(400).send(error.message);
