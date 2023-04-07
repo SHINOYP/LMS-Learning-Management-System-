@@ -24,6 +24,11 @@ const UserSchema=new Schema({
     avatar: {
         type:String,
         default:'../uploads/uchiha.jpg'
+    },
+    role:{
+        type:String,
+        default:"Student"
+
     }
 })
 

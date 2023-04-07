@@ -17,8 +17,6 @@ root.render(
         </BrowserRouter>
       </AuthContextProvider>
     </ChapterContextProvider> 
-  </ModuleContextProvider>
-
-    
+  </ModuleContextProvider> 
   
 );

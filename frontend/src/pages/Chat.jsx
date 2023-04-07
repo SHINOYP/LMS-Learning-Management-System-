@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import Accordion from '../componets/Collapsible';
-
-
+import ErrorPage from '../componets/ErrorPage';
 
 
 function Chat() {
 
 
   return (
-    <div>
-      <Accordion/>
+    <div >
+      <ErrorPage/>
     </div>
   );
 }

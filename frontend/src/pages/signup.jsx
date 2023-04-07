@@ -15,10 +15,12 @@ const Signup=()=>{
     const {user}=useAuthContext();
 
     const handleSubmit=async(e)=>{
-        
+        e.preventDefault()
 
-        await signup(name,email,password)
-      
+        await signup(name,email,password);
+        setEmail('');
+        setName('');
+        setPassword('');
         
     }
     return(
@@ -60,7 +62,7 @@ const Signup=()=>{
                     value={password}
                 />
                 
-            <button disabled={isLoading} className='bg-sky-600 hover:bg-sky-400 rounded-xl mt-10 ml-2 text-white text-xl' style={{width:'390px' ,height:'58px'}}>Signup</button>
+            <button disabled={isLoading} className='bg-sky-600 hover:bg-sky-400 rounded-xl mt-10 ml-2 text-white text-xl' style={{width:'390px' ,height:'58px'}}>Submit</button>
             {error && <div>{error}</div>}
             <h1 className='mt-6 mx-auto' >----------------------<span className='text-lg'>Or</span>----------------------</h1>
             <span className='mt-6 mx-auto'> Have an account ! <Link to={'/login'} className="text-blue-400">log in</Link></span>

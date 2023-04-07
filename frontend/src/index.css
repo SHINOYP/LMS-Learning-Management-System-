@@ -109,4 +109,25 @@ div.profilecrl:hover i {
   transform: scale(3);
   transition: transform 0.35s ease-in;
 }
+.swiper {
+  width: 1170px;
+  height: 330px;
+  border-radius: 10px;
+  background-color: rgb(179, 188, 199);
+}
 
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  object-fit: cover;
+}

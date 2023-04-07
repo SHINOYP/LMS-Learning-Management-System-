@@ -1,6 +1,7 @@
 const express=require('express');
 const { createChapters,
         getChapters,
+        getChapters_st,
         getchapter,
         deleteChapter,
         updateChapter,
@@ -18,6 +19,9 @@ router.use(requireAuth)
 
 //GET all chapters
 router.get('/',getChapters)
+
+//GET all chapters studnet
+router.get('/st',getChapters_st)
 
 
 //GET a single chapters

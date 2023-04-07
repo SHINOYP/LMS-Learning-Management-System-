@@ -26,7 +26,7 @@ export default function Collapsible({unit}) {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      {console.log(unit)}
+      
     </div>
   );
 }

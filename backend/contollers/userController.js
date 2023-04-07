@@ -24,7 +24,8 @@ const loginUser = async(req,res)=>{
         const _id=(user._id)
         const name=(user.name)
         const avatar=(user.avatar)
-        res.status(200).json({name,avatar,_id,email,token})
+        const role=(user.role)
+        res.status(200).json({name,avatar,_id,email,token,role})
     }catch(error){
         res.status(400).json({error:error.message})
     }

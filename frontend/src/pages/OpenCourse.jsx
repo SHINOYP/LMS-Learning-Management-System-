@@ -1,5 +1,4 @@
 import { useModuleContext } from "../hooks/useModuleContext";
-
 import { useLocation } from "react-router-dom";
 import { useEffect,useState } from "react";
 import Collapsible from "../componets/Collapsible";
@@ -9,8 +8,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import Popup from '../componets/teach/AddNewModule'
 import TextField from '@mui/material/TextField';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-
-
+import BreadCrumbs from '../componets/BreadCrumb'
+import { ProgressBar } from 'react-loader-spinner';
+import Swal from 'sweetalert2';
 
 
 const OpenCourse=()=>{
@@ -30,13 +30,15 @@ const OpenCourse=()=>{
     const [head,setHead]=useState('');
     const [linktxt,setLinktxt]=useState('');
     const [error,setError]=useState('');
+    const [loading,setLoading]=useState(null);
     const [buttonPopup,setButtonPopup]=useState(false);
     const [buttonPopup2,setButtonPopup2]=useState(false);
     const {user}=useAuthContext()
     // const {dispatch}=useModuleContext()
-
+    
     const handleSubmit= async(e)=>{
         e.preventDefault()
+        setLoading(true);
 
         if(!user){
             setError('you must be logged in')
@@ -61,11 +63,26 @@ const OpenCourse=()=>{
 
         if(!response.ok){
             setError(json.error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
             
         }
         if(response.ok){
             setUnits('')
             setError(null)
+            setLoading(false)
+            setButtonPopup(false)
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'New note Added successfully',
+                showConfirmButton: false,
+                timer: 2000
+              })
             console.log('new module added',json)
             console.log(JSON.stringify(json))
             // dispatch({type:'CREATE_MODULE',payload:json})
@@ -74,7 +91,7 @@ const OpenCourse=()=>{
     }
     const handleSubmit2= async(e)=>{
         e.preventDefault()
-
+        setLoading(true)
         if(!user){
             setError('you must be logged in')
             return
@@ -93,6 +110,12 @@ const OpenCourse=()=>{
 
         if(!response.ok){
             setError(json.error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
             
         }
         if(response.ok){
@@ -100,6 +123,14 @@ const OpenCourse=()=>{
             setLinktxt('')
             setButtonPopup2(false)
             setError(null)
+            setLoading(false)
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'New link Added successfully',
+                showConfirmButton: false,
+                timer: 2000
+              })
             console.log('new LINK added',json)
             console.log(JSON.stringify(json))
         }
@@ -108,21 +139,24 @@ const OpenCourse=()=>{
   
     return(
         <div>
+            <BreadCrumbs />
             
              <div className=" flex flex-col">
+                
              <div className="flex  flex-col justify-between mx-4">
-                <h1 className="ml-2 mt-10 mb-4 text-xl font-black  flex">Course overview</h1>
-                <div className="inline-flex  shadow-sm mx-auto my-4" role="group">
-                    <button type="button"   onClick={()=>setButtonPopup(true)}   className="inline-flex items-center px-32 py-4 text-sm font-black font-medium text-gray-900 bg-blue-600   border-4 border-gray-900 hover:border-green-400 rounded-lg hover:bg-red-900 hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-red-900 focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-blue-700 dark:focus:bg-blue-700 ">
+                <h1 className="ml-20 mt-10 mb-4 text-xl font-black  flex">Course overview</h1>
+                <div className="inline-flex text-white  mx-auto my-4" role="group">
+                    {user.role =="Admin" ? <button type="button"   onClick={()=>setButtonPopup(true)}   className="inline-flex items-center px-28 py-3 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-green-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300  ">
                      <PictureAsPdfIcon className="mr-2"/> Upload a Note
-                    </button>
-                    <button type="button" onClick={()=>setButtonPopup2(true)}  className="mx-2 inline-flex items-center px-32 py-4 text-sm font-medium text-gray-900 bg-blue-600  border-4 rounded-lg border-gray-900 hover:border-green-400 hover:bg-red-900 hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-red-900 focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-blue-700 dark:focus:bg-blue-700">
+                    </button>  : null }
+                    
+                    {user.role =="Admin" ?<button type="button" onClick={()=>setButtonPopup2(true)}  className="inline-flex items-center px-28 py-3 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-rose-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ">
                     <AddLinkIcon className="mr-2"/>   Upload a link
-                    </button>
-                    <button type="button" class="inline-flex items-center px-32 py-4 text-sm font-medium text-gray-900 bg-blue-600   border-4 border-gray-900 rounded-lg hover:border-green-400 hover:bg-red-900 hover:text-black focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-red-900 focus:text-black dark:border-white dark:text-white dark:hover:text-black dark:hover:bg-blue-700 dark:focus:bg-blue-700">
+                    </button>: null }
+                    {user.role =="Admin" ?<button type="button" class="inline-flex items-center px-28 py-3 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-purple-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ">
                         <svg aria-hidden="true" class="w-4 h-4 mr-2 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd"></path></svg>
                         Downloads
-                    </button>
+                    </button>: null }
                 </div>
             </div>  
              <div className="mx-auto">
@@ -139,7 +173,22 @@ const OpenCourse=()=>{
              </div>
              <Popup trigger={buttonPopup} setTrigger={setButtonPopup} >
                     <div className=" flex items-center justify-center ">
-                        <form className="flex flex-col" onSubmit={handleSubmit} enctype="multipart/form-data">
+                        {loading ? (
+                        <div className="flex flex-col">        
+                            <ProgressBar
+                            height="100"
+                            width="200"
+                            ariaLabel="progress-bar-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="progress-bar-wrapper"
+                            borderColor = '#000000'
+                            barColor = '#07fc03'
+                            />
+                            <h1 className="text-4xl font-black mb-4">UPLOADING..</h1>    
+                            
+                            </div>):
+                        (              
+                        <form className="flex flex-col" onSubmit={handleSubmit} encType="multipart/form-data">
                             <h2 className="mx-auto text-lg font-black">Upload A New Note</h2> 
                             <label className="mt-10 mb-2 font-black">File name</label>
                              <TextField
@@ -159,21 +208,36 @@ const OpenCourse=()=>{
                                 aria-describedby="file_input_help" 
                                 id="file_input"
                                 type="file"
-                                name="profileImage"
+                                accept=".pdf"
                                 onChange={(e)=>setFile(e.target.files[0])}
                             />
-                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-500" id="file_input_help">PDF, PNG, JPG (MAX. 10MB)</p>
+                            <p className="mt-1 text-sm text-gray-500 dark:text-gray-500" id="file_input_help">PDF only(MAX. 10MB)</p>
 
                             <button className=" mt-10 bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg py-2"><CloudUploadIcon className="mr-2"/>UPLOAD</button>
                             
                              {error && <div>{error}</div>}
                         </form>
                         
-
+                        )}
                     </div>  
                 </Popup>
                 <Popup trigger={buttonPopup2} setTrigger={setButtonPopup2} >
                     <div className=" flex items-center justify-center ">
+                        {loading ? (
+                        <div className="flex flex-col">        
+                            <ProgressBar
+                            height="100"
+                            width="200"
+                            ariaLabel="progress-bar-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="progress-bar-wrapper"
+                            borderColor = '#000000'
+                            barColor = '#07fc03'
+                            />
+                            <h1 className="text-4xl font-black mb-4">UPLOADING..</h1>    
+                            
+                            </div>):
+                        (              
                         <form className="flex flex-col" onSubmit={handleSubmit2}>
                             <h2 className="mx-auto text-lg font-black">Upload A New Note</h2> 
                             <label className="mt-10 mb-2 font-black">Enter title</label>
@@ -205,8 +269,7 @@ const OpenCourse=()=>{
                             
                              {error && <div>{error}</div>}
                         </form>
-                        
-
+                        )}
                     </div>  
                 </Popup>
              </div>

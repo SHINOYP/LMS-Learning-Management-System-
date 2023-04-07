@@ -6,7 +6,7 @@ import sqr from '../img/sqr.svg'
 import sqr2 from '../img/sqr2.svg'
 import sqr3 from '../img/sqr3.svg'
 import sqr4 from '../img/sqr4.svg'
-
+import Book from '../img/icons/Book2.png'
 
 
 
@@ -20,23 +20,26 @@ const Login=()=>{
         e.preventDefault()
 
         await login(email,password)
-
+        
         if(user){
             <Navigate to="/dashboard" replace={true} />
-
         } 
     }
     
     return(
         <div className="login relative text-white flex flex-col items-center justify-center ">
         {user && (
+
           <Navigate to="/dashboard" replace={true} />
         )}
         <img src={sqr} className="absolute top-0 left-0"></img>
         <img src={sqr2} className="absolute top-0 right-0"></img>
         <img src={sqr3} className="absolute bottom-0 left-0"></img>
         <img src={sqr4} className="absolute bottom-0 right-0"></img>
+        
+         <img src={Book} className="absolute top-20 "></img>
         <form className='flex flex-col' onSubmit={handleSubmit}>
+           
             <h3 className='mx-auto mb-14 font-medium text-4xl'>Log in</h3>
             
                 <label className=' mb-2'>Email:</label>

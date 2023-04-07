@@ -1,7 +1,7 @@
-
+import Swal from 'sweetalert2';
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
-
+import { Navigate } from 'react-router-dom';
 
 export const useSignup=()=>{
     const [error,setError]=useState(null)
@@ -33,6 +33,15 @@ export const useSignup=()=>{
             dispatch({type:'LOGIN',payload:json})
 
             setIsLoading(false)
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Signin Successfully',
+                showConfirmButton: false,
+                timer: 2000
+              });
+              
+            
 
         }
 

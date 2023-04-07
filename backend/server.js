@@ -7,7 +7,7 @@ const moduleRoutes=require('./routes/module')
 const userRoutes=require('./routes/user')
 const path=require('path');
 const fileRoutes=require('./routes/file')
-
+const routes = require("./routes/ToDoRoute");
 
 
 //express app created 
@@ -36,7 +36,7 @@ app.use('/api/chapters',chaptersRoutes)
 app.use('/api/module',moduleRoutes)
 app.use('/api/user',userRoutes)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
+app.use(routes);
 app.use('/api', fileRoutes.routes);
 
 

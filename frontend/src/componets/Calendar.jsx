@@ -15,7 +15,7 @@ export default function Calendar() {
   const [value, setValue] = React.useState(dayjs('2022-04-07'));
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <LocalizationProvider dateAdapter={AdapterDayjs} >
       <StaticDatePicker
         orientation="potrait"
         openTo="day"

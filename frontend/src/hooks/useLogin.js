@@ -1,4 +1,4 @@
-
+import Swal from 'sweetalert2';
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
@@ -33,6 +33,13 @@ export const useLogin=()=>{
             dispatch({type:'LOGIN',payload:json})
 
             setIsLoading(false)
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login Successfully',
+                showConfirmButton: false,
+                timer: 2000
+              })
 
         }
 

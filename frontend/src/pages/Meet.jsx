@@ -1,6 +1,13 @@
+import Gmeet from "../componets/Gmeet";
+
+
 const Meet=()=>{
     return(
-        <h2>MEET HERE</h2>
+        <div className="flex w-2/2 h-full " >
+      
+        <Gmeet />
+        </div>
+       
     )
 }
 

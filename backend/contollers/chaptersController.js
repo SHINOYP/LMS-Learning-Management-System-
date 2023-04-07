@@ -6,30 +6,55 @@ const cloudinary=require('../helper/cloudinary')
 
 // get all chapters
 const getChapters=async(req,res)=>{
-    const user_id=req.user._id
-    const chapters=await Chapters.find({ user_id }).sort({createdAt:-1})
+    try{
+        const user_id=req.user._id
+        const chapters=await Chapters.find({ user_id }).sort({createdAt:-1})
+        res.status(200).json(chapters);
 
-    res.status(200).json(chapters);
+    }catch(err){
+        res.status(400).json(err);
+        console.log(err);
+    }
+    
+
+    
+   
 }
+
+//get all chapters student 
+const getChapters_st=async(req,res)=>{
+    try{
+        const chapters=await Chapters.find({});
+        res.status(200).json(chapters);
+
+    }catch(err){
+        res.status(400).json(err);
+        console.log(err);
+    }
+}
+
 
 
 
 //get a single chapters  
 const getchapter=async(req,res)=>{
     const {id}=req.params
-
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:'no such id'})
+    try{
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return res.status(404).json({error:'no such id'})
+        }
+    
+        const chapters=await Chapters.findById(id)
+    
+        if(!chapters){
+            return res.status(404).json({error:"no such workout"})
+        }
+        res.status(200).json(chapters)
+    }catch(err){
+        res.status(400).json(err);
     }
-
-    const chapters=await Chapters.findById(id)
-
-    if(!chapters){
-        return res.status(404).json({error:"no such workout"})
-    }
-
-    res.status(200).json(chapters)
-}
+}   
+    
 
 
 
@@ -121,6 +146,7 @@ const deleteChapter=async(req,res)=>{
 
 module.exports={
     getChapters,
+    getChapters_st,
     getchapter,
     createChapters,
     deleteChapter,

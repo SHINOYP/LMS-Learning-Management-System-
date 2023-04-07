@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import Courses from "./pages/Courses";
 import Profile from "./pages/Profile"
 import Chat  from './pages/Chat';
+import Grades  from './pages/Grades';
 import Meet from "./pages/Meet";
 import Todo from "./pages/Todo";
 import AddNewModule from '../src/componets/teach/AddNewModule';
@@ -30,10 +31,10 @@ function App() {
     
   // });
   return (
-    <div className="App flex justify-between  mx-auto" >
+    <div className="App flex justify-between antialiased "  >
      
       {! excludedRoutes.includes(Location.pathname) && <Navbar/>}
-       <div className='pages'>
+       <div className='pages w-full h-full'>
         <Routes>
           <Route
             path='/'
@@ -45,7 +46,7 @@ function App() {
           />
           <Route 
            path="/login"
-            element={!user ?<Login/> :<Navigate to='/Dashboard' />}
+            element={<Login/>}
            /> 
           <Route
             path="/signup"
@@ -80,9 +81,13 @@ function App() {
             path="/AddNewModule"
             element={user ? <AddNewModule/> : <Navigate to='/login'/>}
           />
+          <Route
+            path="/Grades"
+            element={user ? <Grades/> : <Navigate to='/login'/>}
+          />
         </Routes>
        </div>
-
+        
        {!excludedRoutes.includes(Location.pathname) && <Footer/>}
     </div>
   );
