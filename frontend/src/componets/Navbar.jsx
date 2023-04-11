@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 
 const Navbar=()=>{
     const {logout}=useLogout();
-    const user=JSON.parse(localStorage.getItem('user'))
+    const {user}=useAuthContext()
     const navigate=useNavigate();
     const handleClick=()=>{
         Swal.fire({
@@ -39,6 +39,7 @@ const Navbar=()=>{
             }
           })
         
+          console.log(user)
         
     }
     return(
@@ -49,7 +50,7 @@ const Navbar=()=>{
                             <img src={book} className="w-8 mr-2"></img> <h1 >LMS</h1>
                             </div>
                             <NavLink to="/Dashboard"  className={({ isActive }) => (isActive ? " border-solid border-6 mt-20 w-30  ml-6 mr-4  px-6 py-2 bg-blue-800 drop-shadow-md  rounded-xl" : " border-solid border-6   mt-20 w-30 ml-6 mr-4 px-6 py-2  hover:bg-blue-800 hover:drop-shadow-md rounded-xl")}><GridViewIcon className="mr-4 mb-1"/>Dashboard</NavLink> 
-                            {user.role === 'Admin' ? 
+                            {user && user.role === 'Admin' ? 
                                     <NavLink to="/Courses"  className={({ isActive }) => (isActive ? "flex border-solid border-6 w-30 px-6 py-2 ml-6 mr-4 mt-2 bg-blue-800 drop-shadow-md  rounded-xl" : "flex border-solid border-6  w-30 px-6 py-2 ml-6 mr-4 mt-2  hover:bg-blue-800 hover:drop-shadow-md rounded-xl")} ><ClassIcon className="mr-4 mb-1"/>Courses</NavLink>
                                      :  <NavLink  to="/Grades" className={({ isActive }) => (isActive ? "flex border-solid border-6 w-30  px-6 py-2 ml-6 mr-4   mt-2 bg-blue-800 drop-shadow-md  rounded-xl" : "flex border-solid border-6  w-30 px-6 py-2 ml-6 mr-4 mt-2  hover:bg-blue-800 hover:drop-shadow-md rounded-xl")} ><InsertChartIcon className="mr-4 mb-1"/>Grades</NavLink>}
                             <NavLink to="/Todo"  className={({ isActive }) => (isActive ? "flex border-solid border-6 w-30  px-6 py-2 ml-6 mr-4   mt-2 bg-blue-800 drop-shadow-md  rounded-xl"  : "flex border-solid border-6  w-30 px-6 py-2 ml-6 mr-4 mt-2  hover:bg-blue-800 hover:drop-shadow-md rounded-xl")} ><ListAltIcon className="mr-4 mb-1"/>To-do</NavLink>
