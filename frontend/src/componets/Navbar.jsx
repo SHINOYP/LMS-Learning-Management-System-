@@ -17,7 +17,7 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { logout } = useLogout();
-  const { user } = useAuthContext();
+  const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
   const handleClick = () => {
     Swal.fire({
@@ -34,13 +34,11 @@ const Navbar = () => {
         navigate("/login");
       }
     });
-
-    console.log(user);
   };
   return (
     <header>
       <nav
-        className="font-semibold bg-indigo-900 lg:w-72 w-60 text-white sticky top-0 bottom-0 text-lg   "
+        className="font-semibold bg-indigo-900 w-72 text-white sticky top-0 bottom-0 text-lg   "
         style={{ minHeight: "100vh" }}
       >
         <div className="flex flex-col ">
@@ -58,7 +56,7 @@ const Navbar = () => {
             <GridViewIcon className="mr-4 mb-1" />
             Dashboard
           </NavLink>
-          {user && user.role === "Admin" ? (
+          {user.role === "Admin" ? (
             <NavLink
               to="/Courses"
               className={({ isActive }) =>
@@ -83,7 +81,6 @@ const Navbar = () => {
               Grades
             </NavLink>
           )}
-            
           <NavLink
             to="/Todo"
             className={({ isActive }) =>
@@ -92,7 +89,7 @@ const Navbar = () => {
                 : "flex border-solid border-6  w-30 px-6 py-2 ml-6 mr-4 mt-2  hover:bg-blue-800 hover:drop-shadow-md rounded-xl"
             }
           >
-            <ListAltIcon className="mr-4 mb-1 " />
+            <ListAltIcon className="mr-4 mb-1" />
             To-do
           </NavLink>
           {user?.role === "Admin" ? (
@@ -105,7 +102,7 @@ const Navbar = () => {
               }
             >
               <ClassIcon className="mr-4 mb-1" />
-             Student List
+              Student List
             </NavLink>
           ) : (
             <></>
@@ -135,7 +132,7 @@ const Navbar = () => {
             Meet
           </NavLink>
         </div>
-        <div className="mt-56">
+        <div className="mt-60">
           <button onClick={handleClick} className="m-14 flex">
             <LogoutIcon /> Logout
           </button>

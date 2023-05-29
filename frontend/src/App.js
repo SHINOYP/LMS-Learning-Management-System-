@@ -24,18 +24,15 @@ function App() {
   const excludedRoutes = ["/login", "/signup", "/profile"];
   const excludedRoute = ["/profile"];
 
-  // // clear local storage when use exits the tab
-  // useEffect(() => {
-  //   window.onbeforeunload = function () {
-  //     localStorage.clear("user");
-  //   };
-  // });
   return (
     <div className="App flex justify-between antialiased ">
       {!excludedRoutes.includes(Location.pathname) && <Navbar />}
       <div className="pages w-full h-full">
         <Routes>
-          <Route path="/" element={user ? "" : <Navigate to="/login" />} />
+          <Route
+            path="/"
+            element={user ? <Dashboard /> : <Navigate to="/login" />}
+          />
           <Route
             path="/Dashboard"
             element={user ? <Dashboard /> : <Navigate to="/login" />}
