@@ -1,35 +1,31 @@
 import { useReducer } from "react";
 import { createContext } from "react";
 
+export const ModuleContext = createContext();
 
-export const ModuleContext=createContext()
-
-export const moduleReducer=(state,action)=>{
- switch(action.type){
-    case 'SET_MODULE':
-        return{
-            module:action.payload
-        }
-    case 'CREATE_MODULE':
-        return{
-            module:[action.payload, ...state.module]
-        }
+export const moduleReducer = (state, action) => {
+  switch (action.type) {
+    case "SET_MODULE":
+      return {
+        module: action.payload,
+      };
+    case "CREATE_MODULE":
+      return {
+        module: [action.payload, ...state.module],
+      };
     default:
-        return state
- }   
-}
+      return state;
+  }
+};
 
-export const ModuleContextProvider=({children})=>{
-    const [state,dispatch]=useReducer(moduleReducer,{
-        module:null
-    })
-    
+export const ModuleContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(moduleReducer, {
+    module: null,
+  });
 
-
-    return(
-        <ModuleContext.Provider value={{...state,dispatch}}>
-            {children}
-        </ModuleContext.Provider>
-    )
-}
-
+  return (
+    <ModuleContext.Provider value={{ ...state, dispatch }}>
+      {children}
+    </ModuleContext.Provider>
+  );
+};

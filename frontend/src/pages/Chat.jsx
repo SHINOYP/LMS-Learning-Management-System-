@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import ErrorPage from '../componets/ErrorPage';
-
+import React, { useState } from "react";
+import ErrorPage from "../componets/ErrorPage";
 
 function Chat() {
-
-
   return (
-    <div >
-      <ErrorPage/>
+    <div>
+      <ErrorPage />
     </div>
   );
 }

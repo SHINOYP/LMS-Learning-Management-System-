@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
-import ErrorPage from '../componets/ErrorPage';
-
-
-
+import React, { useState } from "react";
+import ErrorPage from "../componets/ErrorPage";
 
 function Grades() {
-
-
   return (
     <div>
-      <ErrorPage/>
+      <ErrorPage />
     </div>
   );
 }
