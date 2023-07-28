@@ -11,6 +11,7 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import BreadCrumbs from "../componets/BreadCrumb";
 import { ProgressBar } from "react-loader-spinner";
 import Swal from "sweetalert2";
+import Layout from "../componets/Layout/Layout";
 
 const OpenCourse = () => {
   const location = useLocation();
@@ -133,7 +134,7 @@ const OpenCourse = () => {
   };
 
   return (
-    <div>
+    <Layout>
       <BreadCrumbs />
 
       <div className=" flex flex-col">
@@ -142,7 +143,7 @@ const OpenCourse = () => {
             Course overview
           </h1>
           <div className="inline-flex text-white  mx-auto my-4" role="group">
-            {user.role == "Admin" ? (
+            {user.role === "Admin" ? (
               <button
                 type="button"
                 onClick={() => setButtonPopup(true)}
@@ -152,7 +153,7 @@ const OpenCourse = () => {
               </button>
             ) : null}
 
-            {user.role == "Admin" ? (
+            {user.role === "Admin" ? (
               <button
                 type="button"
                 onClick={() => setButtonPopup2(true)}
@@ -161,7 +162,7 @@ const OpenCourse = () => {
                 <AddLinkIcon className="mr-2" /> Upload a link
               </button>
             ) : null}
-            {user.role == "Admin" ? (
+            {user.role === "Admin" ? (
               <button
                 type="button"
                 className="inline-flex items-center px-28 py-3 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-purple-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 "
@@ -309,7 +310,7 @@ const OpenCourse = () => {
           </div>
         </Popup>
       </div>
-    </div>
+    </Layout>
   );
 };
 

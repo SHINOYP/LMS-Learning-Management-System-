@@ -63,7 +63,7 @@ const CourseTiles = (props) => {
   };
 
   return (
-    <div className="flex my-4 flex-col relative  w-80 mx-10  bg-white border-solid rounded-lg drop-shadow-2xl  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 ">
+    <div className="flex my-4 flex-col relative  w-80 mx-6 bg-white border-solid rounded-lg drop-shadow-2xl  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 ">
       <div className="border-white   w-72 ">
         {location.pathname !== "/Dashboard" && (
           <>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ErrorPage = () => {
   return (
     <div>
-      <div className="flex flex-col justify-center items-center h-screen">
+      <div className="flex flex-col justify-center items-center w-[100vw] md:w-[80vw] h-screen">
         <h1 className="text-6xl font-black mb-4">404</h1>
         <h2 className="text-xl font-bold">Iam working on it!</h2>
         <img alt="" className="mt-14" src={error}></img>

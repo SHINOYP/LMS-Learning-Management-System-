@@ -2,68 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  margin: 0px;
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  font-family: 'Fira Code', monospace;
-  font-family: 'Inter', sans-serif;
-  font-family: 'Lato', sans-serif;
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Fira Code', monospace;
-
-
+  font-family: "Fira Code", monospace;
+  font-family: "Inter", sans-serif;
+  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-family: "Fira Code", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(228, 228, 228);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root{
+.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root {
   display: none !important;
 }
-.css-hlj6pa-MuiDialogActions-root{
+.css-hlj6pa-MuiDialogActions-root {
   display: none !important;
 }
-.css-epd502{
+.css-epd502 {
   background-color: rgb(121, 165, 182);
   border-radius: 24px;
-
 }
 
-.login{
+.login {
   width: 100vw;
   height: 100vh;
-  background-color: black;
-  font-family: 'Itim', cursive;
+  color: black;
+  font-weight: 900;
 }
 
-.field{
+.field {
   width: 407px;
   height: 60px;
 }
-input[type=email] {
- 
+input[type="email"] {
   padding: 12px 20px;
-
 }
-input[type=text] {
- 
+input[type="text"] {
   padding: 12px 20px;
-
 }
-input[type=password] {
- 
+input[type="password"] {
   padding: 12px 20px;
-
 }
-th, td {
+th,
+td {
   padding: 15px;
 }
-
 
 /* profile pic hover */
 
@@ -74,7 +69,7 @@ div.profilecrl {
   width: 230px;
   border-radius: 99%;
   background-color: rgb(130, 134, 130);
-  box-shadow: 10px 10px 35px -15px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 35px -15px rgba(0, 0, 0, 0.75);
 }
 
 div.profilecrl img {
@@ -89,7 +84,7 @@ div.profilecrl i {
   position: absolute;
   top: 45%;
   left: 45%;
-  transform: scale(4)
+  transform: scale(4);
 }
 
 div.profilecrl:hover img {
@@ -110,7 +105,8 @@ div.profilecrl:hover i {
   transition: transform 0.35s ease-in;
 }
 .swiper {
-  width: 1170px;
+  width: 100%;
+  max-width: 75vw;
   height: 330px;
   border-radius: 10px;
   background-color: rgb(179, 188, 199);
@@ -119,7 +115,6 @@ div.profilecrl:hover i {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  
 
   /* Center slide text vertically */
   display: flex;
@@ -131,3 +126,146 @@ div.profilecrl:hover i {
   display: block;
   object-fit: cover;
 }
+
+.sidebar {
+  width: 18rem;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.3s ease;
+  color: white;
+  background: rgb(5, 1, 71);
+  background: linear-gradient(
+    180deg,
+    rgb(11, 5, 131) 0%,
+    rgb(10, 10, 156) 47%,
+    rgb(5, 81, 222) 100%
+  );
+}
+
+.sidebar-active {
+  z-index: 100;
+  position: absolute;
+  animation: left-to-right 0.3s ease-in;
+  width: 18rem;
+  min-height: 100vh;
+  color: white;
+  background: rgb(5, 1, 71);
+  background: linear-gradient(
+    180deg,
+    rgb(11, 5, 131) 0%,
+    rgb(10, 10, 156) 47%,
+    rgb(5, 81, 222) 100%
+  );
+}
+@keyframes right-to-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes left-to-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .swiper {
+    width: 100%;
+    max-width: 98vw;
+    height: 330px;
+    border-radius: 10px;
+    background-color: rgb(179, 188, 199);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    animation: right-to-left 0.3s ease-in;
+    left: -150%;
+  }
+  .field {
+    width: 90vw;
+    height: 60px;
+    margin: auto;
+  }
+  input[type="email"] {
+    padding: 12px 20px;
+  }
+  input[type="text"] {
+    padding: 12px 20px;
+  }
+  input[type="password"] {
+    padding: 12px 20px;
+  }
+}
+
+/* some copy paste boiler plate hamburger menu animation */
+
+.checkbtn {
+  @media (max-width: 1000px) {
+    position: relative;
+    /* transform: translate(-50%, -50%); */
+    cursor: pointer;
+    transition: 0.5s ease;
+    height: 20px;
+    z-index: 10;
+    margin: 0.5rem;
+    &:hover .bar {
+      box-shadow: 1px 1px 7px 1px RGBa(0, 0, 0, 0.3);
+    }
+    .bar {
+      width: 30px;
+      height: 3px;
+      background: black;
+      box-shadow: 1px 1px 3px RGBa(0, 0, 0, 0.4);
+      border-radius: 1px;
+      transition: 0.4s ease;
+      &:not(:first-child) {
+        margin-top: 7px;
+      }
+    }
+  }
+}
+
+#check {
+  display: none;
+  position: absolute;
+  left: -999px;
+  top: -999px;
+}
+
+/* #check:checked + .num{
+  background-color: red;
+  color: red;
+ }
+ 
+ 
+#check:checked + .checkbtn {
+  position: fixed;
+  width: 20px;
+  left: 20px;
+  transform: translate(-50%, -50%) rotatey(180deg);
+  .bar {
+    height: 10px;
+    transform: rotatey(180deg) rotatex(360deg);
+    &:first-child {
+      transform: rotate(-40deg);
+      margin-top: 20px;
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      margin-top: -30px;
+      transform: rotate(45deg);
+    }
+  }
+} */

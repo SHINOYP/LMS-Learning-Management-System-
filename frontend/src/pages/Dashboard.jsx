@@ -1,19 +1,16 @@
+import React, { useRef,useEffect, useState  } from "react";
 import DashCourseTile from "../componets/DashCourseTile";
 import CourseTiles from "../componets/CourseTiles";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useChapterContext } from "../hooks/useChapterContext";
-import { useEffect, useState } from "react";
 import hand from "../img/icons/hand.png";
-import React, { useRef } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-// import required modules
-import { FreeMode, Pagination, Navigation } from "swiper";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import Slider from "react-slick";
+import Layout from "../componets/Layout/Layout";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "../index.css";
+
+
 
 const Dashboard = () => {
   const { chapters, dispatch } = useChapterContext();
@@ -61,52 +58,74 @@ const Dashboard = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="flex flex-col  mx-10">
-      <div>
-        <h1 className="mt-10 text-gray-500 font-bold  ml-4 ">
-          Hello {user.name}, Welcome back{" "}
-        </h1>
-        <h2 className="text-4xl ml-4 font-black flex block items-center">
-          Your DashBoard Today <img src={hand} className="w-16 mb-6" />{" "}
-        </h2>
-      </div>
-      <div className="my-6">
-        <h2 className="ml-4 my-4 text-xl font-bold">Overview</h2>
+    <Layout>
+      <div className="flex flex-col  mx-2 lg:mx-10">
+        <div>
+          <h1 className="mt-10 md:mt-10 text-gray-500 font-bold  ml-4 ">
+            Hello {user.name}, Welcome back{" "}
+          </h1>
+          <div className="flex -mt-6">
+            <h2 className="text-2xl md:text-4xl ml-4 font-black flex  items-center">
+              Your DashBoard Today
+            </h2>
+            <img
+              src={hand}
+              className="w-16 mb-10 ml-0  md:mb-6"
+              alt="not found"
+            />{" "}
+          </div>
+        </div>
+        <div className="my-1 md:my-6">
+          <h2 className="ml-4 my-4 text-xl font-bold">Overview</h2>
+          <div className="flex justify-start flex md:hidden ">
+            <Slider
+              dots={false}
+              slidesToShow={1}
+              slidesToScroll={2}
+              autoplay={true}
+              autoplaySpeed={3000}
+              className="swiper"
+            >
+              {chapters?.map((chapter) => (
+                <div key={chapter._id}>
+                  <CourseTiles key={chapter._id} chapter={chapter} />
+                </div>
+              ))}
+              {/* Add more slides here */}
+            </Slider>
+          </div>
+          <div className="flex justify-start hidden md:flex ">
+            <Slider
+              dots={false}
+              slidesToShow={4}
+              slidesToScroll={2}
+              autoplay={true}
+              autoplaySpeed={3000}
+              className="swiper"
+            >
+              {chapters?.map((chapter) => (
+                <div key={chapter._id}>
+                  <CourseTiles key={chapter._id} chapter={chapter} />
+                </div>
+              ))}
+              {/* Add more slides here */}
+            </Slider>
+          </div>
+        </div>
 
-        <div className="flex ">
-          <Swiper
-            slidesPerView={3}
-            spaceBetween={30}
-            freeMode={true}
-            navigation={true}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[FreeMode, Navigation, Pagination]}
-            className="mySwiper"
-          >
+        <div>
+          <h2 className="ml-4  mt-6 text-xl font-bold">
+            {user.role === "Admin" ? "Your Courses" : "All Courses"}
+          </h2>
+          <div className="flex border rounded-xl flex-wrap  ml-0 md:-ml-6 w-full md:w-[85vw]">
             {chapters &&
               chapters.map((chapter) => (
-                <SwiperSlide key={chapter._id}>
-                  <CourseTiles key={chapter._id} chapter={chapter} />
-                </SwiperSlide>
+                <CourseTiles key={chapter._id} chapter={chapter} />
               ))}
-          </Swiper>
+          </div>
         </div>
       </div>
-
-      <div>
-        <h2 className="ml-4  text-xl font-bold">
-          {user.role == "Admin" ? "Your Courses" : "All Courses"}
-        </h2>
-        <div className="flex border rounded-xl flex-wrap  ">
-          {chapters &&
-            chapters.map((chapter) => (
-              <CourseTiles key={chapter._id} chapter={chapter} />
-            ))}
-        </div>
-      </div>
-    </div>
+    </Layout>
   );
 };
 

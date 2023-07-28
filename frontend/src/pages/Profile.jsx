@@ -2,8 +2,6 @@ import { height } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Banner from "../img/Banner.jpg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Banner from "../img/Banner.jpg"
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useAuthContext } from "../hooks/useAuthContext";
 import AddIcon from "@mui/icons-material/Add";
 import Popup from "../componets/profile/addNewProfile";
