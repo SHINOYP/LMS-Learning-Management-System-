@@ -5,7 +5,7 @@ import { useChapterContext } from "../hooks/useChapterContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const CourseTiles = (props) => {
   const location = useLocation();
@@ -61,31 +61,28 @@ const CourseTiles = (props) => {
       }
     };
   };
-
   return (
     <div className="flex my-4 flex-col relative  w-80 mx-6 bg-white border-solid rounded-lg drop-shadow-2xl  transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300 ">
       <div className="border-white   w-72 ">
-        {location.pathname !== "/Dashboard" && (
-          <>
-            {user.role === "Student" ? (
-              <></>
+            {location.pathname !== '/Dashboard'? (
+              <> {" "}
+              <button
+                onClick={handleClick}
+                className="cursor-not-allowed absolute left-3 top-2 "
+              >
+                <DeleteIcon
+                  className="transform h-64 w-1/5  transition duration-800 hover:scale-150"
+                  style={{ fill: "red", fontSize: "25px" }}
+                />
+                <span className="text-sm">Delete </span>
+              </button></>
             ) : (
               <>
-                {" "}
-                <button
-                  onClick={handleClick}
-                  className="cursor-not-allowed absolute left-3 top-2 "
-                >
-                  <DeleteIcon
-                    className="transform h-64 w-1/5  transition duration-800 hover:scale-150"
-                    style={{ fill: "red", fontSize: "25px" }}
-                  />
-                  <span className="text-sm">Delete </span>
-                </button>
+               
               </>
             )}
-          </>
-        )}
+     
+ 
         <img
           src={props.chapter.img}
           onError={({ currentTarget }) => {

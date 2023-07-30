@@ -23,13 +23,13 @@ const Login = () => {
     await login(email, password);
 
     if (user) {
-      <Navigate to="/dashboard" replace={true} />;
+      <Navigate to="/Dashboard" replace={true} />;
     }
   };
 
   return (
     <div className="login relative text-white flex flex-col items-center justify-center overflow-hidden">
-      {user && <Navigate to="/dashboard" replace={true} />}
+      {user && <Navigate to="/Dashboard" replace={true} />}
       <img alt="err" src={sqr} className="absolute top-0 left-0 lg:w-[200px]  md:w-[150px] w-[100px]"></img>
       <img alt="err" src={sqr2} className="absolute top-0 right-0 lg:w-[200px]  md:w-[150px] w-[100px]"></img>
       <img alt="err" src={sqr3} className="absolute bottom-0 left-0 lg:w-[200px]  md:w-[150px] w-[100px]"></img>

@@ -80,14 +80,14 @@ const Profile = () => {
               style={{ color: "white", fontSize: "50px" }}
             />
           </Link>
-          <div className="flex bg-gray-500 w-full h-96">
+          <div className="flex bg-gray-500 w-full md:h-96 h-40">
             <h1 className="text-white mx-auto my-auto mt-60  font-black text-2xl">
-              {user.role == "Admin" ? "Hi your are an Admin !" : "hi "}
+              {user.role === "Admin" ? "Hi your are an Admin !" : "hi "}
             </h1>
           </div>
           <div
-            className="mx-auto relative profilecrl "
-            style={{ top: "-90px" }}
+            className="mx-auto relative  profilecrl "
+            
           >
             <button onClick={() => setButtonPopup(true)}>
               <i>
@@ -97,10 +97,10 @@ const Profile = () => {
               <img
                 src={user.avatar}
                 alt=""
-                className="ring-8 ring-slate-800 dark:ring-slate-800 w-56 flex h-56 rounded-full"
+                className="md:ring-8 ring-2 ring-slate-800 dark:ring-slate-800 md:w-56  w-32 flex h-32 md:h-56 rounded-full"
               />
             </button>
-            <h1 className="ml-14 text-4xl mt-56  font-bold">{user.name}</h1>
+            <h1 className="md:ml-14  ml-4 text-xl md:text-4xl md:mt-56  mt-28 font-bold">{user.name}</h1>
           </div>
           <img
             src={profileBg}

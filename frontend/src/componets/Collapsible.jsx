@@ -7,13 +7,13 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Collapsible({ unit }) {
   return (
-    <div style={{ width: "1150px" }} className="my-2">
+    <div  className="my-2  md:w-[100%] md:max-w-[80%] w-[100%]">
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          style={{ height: "80px" }}
+          className="md:h-[80px] h-14"
         >
           <Typography>
             {" "}
@@ -24,13 +24,15 @@ export default function Collapsible({ unit }) {
           <Typography>
             <a
               href={unit.link}
-              className="hover:text-red-500 font-black text-md"
+              className="hover:text-red-500 font-black  text-md"
             >
               View 
             </a>
             <br />
+            <p className="text-sm">
            This is the description. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
+            </p>
           </Typography>
         </AccordionDetails>
       </Accordion>

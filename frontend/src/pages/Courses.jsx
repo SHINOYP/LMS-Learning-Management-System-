@@ -9,6 +9,7 @@ import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Swal from "sweetalert2";
 import { ProgressBar } from "react-loader-spinner";
+import Layout from "../componets/Layout/Layout";
 
 const Courses = () => {
   const [title, setTitle] = useState("");
@@ -89,25 +90,25 @@ const Courses = () => {
   };
 
   return (
-    <div>
-      <div className="flex  flex-col justify-between mx-4">
-        <h1 className="ml-10 mt-10 mb-4 text-xl font-black  flex">
+    <Layout>
+      <div className="flex  flex-col justify-between md:mx-14">
+        <h1 className="md:ml-4 ml-2 md:mt-10 mt-6 md:mb-4  text-md md:text-xl font-black  flex">
           {" "}
           <ClassIcon className="mx-2 my-auto" />
           Your Courses
         </h1>
-        <div className="inline-flex text-white  mx-auto my-6" role="group">
+        <div className="flex text-white  my-6" role="group">
           <button
             type="button"
             onClick={() => setButtonPopup(true)}
-            className="inline-flex items-center px-32 py-4 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 "
+            className="inline-flex items-center lg:px-32 px-2  lg:py-4 md:py-4 py-1 mx-1  md:mx-4  rounded-xl drop-shadow-md md:text-sm text-xs    font-medium  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 "
           >
             <LibraryAddIcon className="mr-2" /> Add New Course
           </button>
           <Link
             to="/profile"
             type="button"
-            className="inline-flex items-center px-32 py-4 mx-4  rounded-xl drop-shadow-md  text-sm  font-black font-medium transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
+            className="inline-flex items-center lg:px-32 px-2 lg:py-4 md:py-4  py-1 mx-1  md:mx-4  rounded-xl drop-shadow-md  md:text-sm text-xs   font-medium transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
           >
             <AccountBoxIcon className="mr-2" />
             Profile
@@ -115,7 +116,7 @@ const Courses = () => {
 
           <button
             type="button"
-            class="inline-flex items-center px-32 py-4  rounded-xl mx-4 drop-shadow-md text-sm font-black font-medium  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
+            class="inline-flex items-center lg:px-32 px-2 lg:py-4 md:py-4 py-1 mx-1   rounded-xl md:mx-4 drop-shadow-md md:text-sm text-xs  font-medium  transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
           >
             <svg
               aria-hidden="true"
@@ -134,7 +135,7 @@ const Courses = () => {
           </button>
         </div>
       </div>
-      <div className=" flex flex-wrap mx-11 ">
+      <div className=" flex flex-wrap md:mx-11 ">
         <h1></h1>
         {chapters &&
           chapters.map((chapter) => (
@@ -204,7 +205,7 @@ const Courses = () => {
           </div>
         </Popup>
       </div>
-    </div>
+    </Layout>
   );
 };
 

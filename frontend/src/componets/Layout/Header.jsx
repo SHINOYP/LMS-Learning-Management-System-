@@ -7,13 +7,15 @@ const Header = ({ check, setCheck }) => {
     setCheck(!check);
   };
   return (
-    <header className="hame flex bg-red w-screen border-b h-12 border-gray-400 bg-white">
-      <input type="checkbox" id="check" onChange={handleChangeMessage} />
+    <header className="hame flex bg-red w-[120%] -ml-10 border-b h-14 border-gray-400 bg-white overflow-hidden">
+     <div className="ml-14 -mt-2">
+     <input type="checkbox" id="check" onChange={handleChangeMessage} />
       <label htmlFor="check" className="checkbtn">
         <div className="bar" />
         <div className="bar" />
         <div className="bar" />
       </label>
+     </div>
     </header>
   );
 };

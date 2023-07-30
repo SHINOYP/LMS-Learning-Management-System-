@@ -64,12 +64,17 @@ td {
 
 div.profilecrl {
   position: relative;
-  top: 20px;
+  top: -90px;
   height: 230px;
   width: 230px;
   border-radius: 99%;
   background-color: rgb(130, 134, 130);
   box-shadow: 10px 10px 35px -15px rgba(0, 0, 0, 0.75);
+  @media(max-width:767px){
+    top: -50px;
+    height: 100px;
+    width: 100px;
+  }
 }
 
 div.profilecrl img {
@@ -128,8 +133,10 @@ div.profilecrl:hover i {
 }
 
 .sidebar {
-  width: 18rem;
-  min-height: 100vh;
+  width: 100%;
+  max-width: 18rem;
+  max-height: 100vh;
+  height: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -142,6 +149,9 @@ div.profilecrl:hover i {
     rgb(10, 10, 156) 47%,
     rgb(5, 81, 222) 100%
   );
+  @media(max-width:1200px){
+    max-width: 15.2rem;
+  }
 }
 
 .sidebar-active {
@@ -179,14 +189,19 @@ div.profilecrl:hover i {
 @media screen and (max-width: 600px) {
   .swiper {
     width: 100%;
-    max-width: 98vw;
+    max-width: 96vw;
     height: 330px;
     border-radius: 10px;
     background-color: rgb(179, 188, 199);
   }
+  .sidebar-active {
+    position: fixed;
+    top: 0;
+  }
 }
 
 @media screen and (max-width: 1000px) {
+ 
   .sidebar {
     animation: right-to-left 0.3s ease-in;
     left: -150%;

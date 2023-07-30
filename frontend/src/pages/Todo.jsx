@@ -46,10 +46,10 @@ function Todo() {
 
   return (
     <Layout>
-      <div className=" flex items-center flex-col h-full w-[94vw]  md:w-[79vw]  justify-center shadow-xl m-6 bg-teal-lightest font-sans">
+      <div className=" flex items-center flex-col h-full w-[100vw]  md:w-[79vw]  justify-center shadow-xl md:m-6 bg-teal-lightest font-sans">
         <div className="bg-white rounded-xl shadow  p-6  h-full w-full">
-          <div className="mb-4 flex flex-col mx-6">
-            <h1 className="text-grey-darkest mx-auto text-4xl font-bold">
+          <div className="mb-0 md:mb-4 flex flex-col mx-0 md:mx-6">
+            <h1 className="text-grey-darkest mx-auto  text-2xl md:text-4xl font-bold">
               Todo List
             </h1>
             <div className="mt-10 mb-20 ">
@@ -69,8 +69,8 @@ function Todo() {
           </div>
           <div>
             {todos.map((todo) => (
-              <div className="flex mb-4   mx-6 items-center border rounded-lg shadow-lg p-4">
-                <p className="w-full text-grey-darkest px-6" key={todo._id}>
+              <div className="flex mb-4  mx-0 md:mx-6 items-center border rounded-lg shadow-lg p-4">
+                <p className="w-full md:text-sm text-xs text-grey-darkest px-0 md:px-6" key={todo._id}>
                   {todo.text}
                 </p>
                 <Checkbox

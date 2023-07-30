@@ -15,14 +15,10 @@ import { useEffect } from "react";
 import Swal from "sweetalert2";
 import Person from "../../img/icons/person.png";
 
-
-const Sidebar = ({ check, setCheck,forwardRef }) => {
+const Sidebar = ({ check, setCheck, forwardRef }) => {
   const { logout } = useLogout();
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
-
-
-
 
   const handleClick = () => {
     Swal.fire({
@@ -41,16 +37,18 @@ const Sidebar = ({ check, setCheck,forwardRef }) => {
     });
   };
   return (
-    <nav className={check ? "sidebar-active" : "sidebar"} ref={forwardRef} >
+    <nav className={check ? "sidebar-active" : "sidebar"} ref={forwardRef}>
       <div className="flex flex-col  ">
-        <div className="flex justify-start mt-8 ml-10 font-sharp  text-2xl">
+        <div className="flex  justify-start mt-8 ml-10 font-sharp  text-2xl">
           <Link
             to="/profile"
             className="flex border d w-20 h-20 bg-slate-200 drop-shadow-md rounded-full "
           >
             {" "}
             <img src={Person} className="m-auto" alt=" not found" />
+           
           </Link>
+          <span className="my-auto ml-4 text-sm md:text-md">{user.name}</span>
 
           {/* <div className="flex items-center flex-col">
             <h1>LMS</h1>
@@ -144,8 +142,8 @@ const Sidebar = ({ check, setCheck,forwardRef }) => {
           Meet
         </NavLink>
       </div>
-      <div className="mt-[94%] bg-red-600 ">
-        <button onClick={handleClick} className="m-14 py-2 flex">
+      <div className="absolute bottom-0 left-0 w-full  bg-red-600 ">
+        <button onClick={handleClick} className="m-2 mx-auto flex">
           <LogoutIcon /> Logout
         </button>
       </div>

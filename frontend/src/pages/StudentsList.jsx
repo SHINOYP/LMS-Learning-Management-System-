@@ -9,6 +9,7 @@ import CustomChip from "../utils/chip/index";
 import CustomAvatar from "../utils/avatar/index";
 import QuickSearchToolbar from "../views/QuickSearchToolbar";
 import { getInitials } from "../utils/get-initials";
+import Layout from "../componets/Layout/Layout";
 
 const renderClient = (params) => {
   const { row } = params;
@@ -135,31 +136,34 @@ const TableColumns = () => {
     getAllUsers();
   }, []);
   return (
-    <Card sx={{ margin: "1rem" }}>
-      <CardHeader title="All Users" />
-      <DataGrid
-        sx={{ height: "90vh",paddingInline:'1rem' }}
-        autoHeight
-        getRowId={(row) => row._id}
-        columns={columns}
-        pageSize={pageSize}
-        hideFooter={true}
-        rowsPerPageOptions={[2, 10, 25, 50]}
-        components={{ Toolbar: QuickSearchToolbar }}
-        rows={filteredData.length ? filteredData : data}
-        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        componentsProps={{
-          baseButton: {
-            variant: "outlined",
-          },
-          toolbar: {
-            value: searchText,
-            clearSearch: () => handleSearch(""),
-            onChange: (event) => handleSearch(event.target.value),
-          },
-        }}
-      />
-    </Card>
+    <Layout>
+      <Card sx={{ margin: "1rem" }} className="w-[95%] lg:w-[90%]">
+        <CardHeader title="All Users" />
+        <DataGrid
+          sx={{ height: "90vh", paddingInline: "1rem" }}
+      
+          autoHeight
+          getRowId={(row) => row._id}
+          columns={columns}
+          pageSize={pageSize}
+          hideFooter={true}
+          rowsPerPageOptions={[2, 10, 25, 50]}
+          components={{ Toolbar: QuickSearchToolbar }}
+          rows={filteredData.length ? filteredData : data}
+          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          componentsProps={{
+            baseButton: {
+              variant: "outlined",
+            },
+            toolbar: {
+              value: searchText,
+              clearSearch: () => handleSearch(""),
+              onChange: (event) => handleSearch(event.target.value),
+            },
+          }}
+        />
+      </Card>
+    </Layout>
   );
 };
 

@@ -7,9 +7,21 @@ const moduleRoutes = require("./routes/module");
 const userRoutes = require("./routes/user");
 const path = require("path");
 const routes = require("./routes/ToDoRoute");
+const { socketController } = require("./contollers/chatController");
 
 //express app created
 const app = express();
+const server = require("http").createServer(app);
+
+// socket.io and then i added cors for cross origin to localhost only
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*", //specific origin you want to give access to,
+  },
+});
+
+socketController(io);
+
 const cors = require("cors");
 const corsOptions = {
   origin: "*",
@@ -26,8 +38,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//route handler
-
+app.use("/api/chat", socketController);
 app.use("/api/chapters", chaptersRoutes);
 app.use("/api/module", moduleRoutes);
 app.use("/api/user", userRoutes);
@@ -42,7 +53,7 @@ mongoose
   })
   .then(() => {
     //listen for requests
-    app.listen(process.env.PORT, () => {
+    server.listen(process.env.PORT, () => {
       console.log("listening to port 4000");
     });
   })

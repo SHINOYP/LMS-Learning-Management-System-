@@ -13,9 +13,9 @@ const Layout = ({ children }) => {
     }
   },'hame');
   return (
-    <div className='flex overflow-hidden '>
+    <div className='flex overflow-hidden h-full '>
       <Sidebar check={check} setCheck={setCheck}  forwardRef={ref} />
-      <div className='flex flex-col lg:ml-[18rem]' >
+      <div className='flex flex-col w-full xl:ml-[18rem] lg:ml-[14rem] ' >
         <Header check={check} setCheck={setCheck} />
         {children}
       </div>

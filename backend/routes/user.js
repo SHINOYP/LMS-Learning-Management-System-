@@ -9,6 +9,7 @@ const {
   getAllUsers,
 } = require("../contollers/userController");
 const { upload } = require("../helper/filehelper");
+const { getChat } = require("../contollers/chatController");
 
 const router = express.Router();
 
@@ -22,4 +23,7 @@ router.get("/all-users", getAllUsers);
 
 router.post("/Profile", upload.single("avatar"), updateProfile);
 
+//get chat
+
+router.get("/messages", getChat);
 module.exports = router;

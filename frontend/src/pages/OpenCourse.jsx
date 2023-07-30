@@ -137,17 +137,17 @@ const OpenCourse = () => {
     <Layout>
       <BreadCrumbs />
 
-      <div className=" flex flex-col">
-        <div className="flex  flex-col justify-between mx-4">
-          <h1 className="ml-20 mt-10 mb-4 text-xl font-black  flex">
+      <div className=" flex flex-col ">
+        <div className="flex  flex-col justify-between md:mx-6">
+          <h1 className="ml-4 md:mt-10  mt-2 mb-4 text-xl font-black  flex">
             Course overview
           </h1>
-          <div className="inline-flex text-white  mx-auto my-4" role="group">
+          <div className="inline-flex text-white  my-4" role="group">
             {user.role === "Admin" ? (
               <button
                 type="button"
                 onClick={() => setButtonPopup(true)}
-                className="inline-flex items-center px-28 py-3 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-green-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300  "
+                className="inline-flex w-max items-center px-2 md:px-28 py-3 md:mx-4  rounded-xl drop-shadow-md text-xs md:text-sm   font-medium  transition ease-in-out delay-150 bg-green-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300  "
               >
                 <PictureAsPdfIcon className="mr-2" /> Upload a Note
               </button>
@@ -157,7 +157,7 @@ const OpenCourse = () => {
               <button
                 type="button"
                 onClick={() => setButtonPopup2(true)}
-                className="inline-flex items-center px-28 py-3 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-rose-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 "
+                className="inline-flex w-max items-center px-2 md:px-28 py-3 md:mx-4  rounded-xl drop-shadow-md text-xs md:text-sm   font-medium  transition ease-in-out delay-150 bg-rose-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 "
               >
                 <AddLinkIcon className="mr-2" /> Upload a link
               </button>
@@ -165,7 +165,7 @@ const OpenCourse = () => {
             {user.role === "Admin" ? (
               <button
                 type="button"
-                className="inline-flex items-center px-28 py-3 mx-4  rounded-xl drop-shadow-md text-sm   font-black font-medium  transition ease-in-out delay-150 bg-purple-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 "
+                className="inline-flex w-max items-center px-2 md:px-28 py-3 md:mx-4  rounded-xl drop-shadow-md text-xs md:text-sm   font-medium  transition ease-in-out delay-150 bg-purple-600 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 "
               >
                 <svg
                   aria-hidden="true"
@@ -185,7 +185,7 @@ const OpenCourse = () => {
             ) : null}
           </div>
         </div>
-        <div className="mx-auto">
+        <div className="md:mx-10 mx-2">
           {file && file.map((files) => <Collapsible unit={files} />)}
           {fileLink && fileLink.map((files) => <Collapsible unit={files} />)}
         </div>

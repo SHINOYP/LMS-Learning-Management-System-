@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Dashboard from "./pages/Dashboard";
 import Courses from "./pages/Courses";
@@ -17,7 +17,7 @@ function App() {
   const { user } = useAuthContext();
 
   return (
-    <div className="App flex justify-between antialiased ">
+    <div className="  ">
       <Routes>
         <Route
           path="/"

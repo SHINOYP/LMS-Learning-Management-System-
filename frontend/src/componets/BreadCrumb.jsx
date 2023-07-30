@@ -14,7 +14,7 @@ export default function IconBreadcrumbs(props) {
   return (
     <div
       role="presentation"
-      className="m-4  text-font-black"
+      className="m-4  text-font-black "
       onClick={handleClick}
     >
       <Breadcrumbs aria-label="breadcrumb">
