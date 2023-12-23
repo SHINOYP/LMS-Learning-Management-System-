@@ -4,17 +4,17 @@
 
 
  Front-end :-
- React js 
+ React js,
  Tailwind Css
  
  
  Back-end :-
- Node js
- Express js
+ Node js,
+ Express js,
  Mongo DB
 
  Other :-
- Socket io
+ Socket io,
  Image upload- Cloudinary
 
  
