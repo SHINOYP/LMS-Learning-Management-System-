@@ -18,4 +18,4 @@
  Image upload- Cloudinary
 
  
- Nb: This is my first project so ui is not perfect 🙌
+ Nb: This is my first project so ui is not perfect also this web app is not production ready🙌
