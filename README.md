@@ -3,17 +3,17 @@
 
 
 
- Front-end 
+ Front-end :-
  React js 
  Tailwind Css
  
  
- Back-end
+ Back-end :-
  Node js
  Express js
  Mongo DB
 
- Other 
+ Other :-
  Socket io
  Image upload- Cloudinary
 
