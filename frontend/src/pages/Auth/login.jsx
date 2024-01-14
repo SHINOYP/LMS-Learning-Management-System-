@@ -28,60 +28,77 @@ const Login = () => {
   };
 
   return (
-    <div className="login relative text-white flex flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden text-white login">
       {user && <Navigate to="/Dashboard" replace={true} />}
-      <img alt="err" src={sqr} className="absolute top-0 left-0 lg:w-[200px]  md:w-[150px] w-[100px]"></img>
-      <img alt="err" src={sqr2} className="absolute top-0 right-0 lg:w-[200px]  md:w-[150px] w-[100px]"></img>
-      <img alt="err" src={sqr3} className="absolute bottom-0 left-0 lg:w-[200px]  md:w-[150px] w-[100px]"></img>
-      <img alt="err" src={sqr4} className="absolute bottom-0 right-0 lg:w-[200px]  md:w-[150px] w-[100px]"></img>
+      <img
+        alt="err"
+        src={sqr}
+        className="absolute top-0 left-0 lg:w-[200px]  md:w-[150px] w-[100px]"
+      ></img>
+      <img
+        alt="err"
+        src={sqr2}
+        className="absolute top-0 right-0 lg:w-[200px]  md:w-[150px] w-[100px]"
+      ></img>
+      <img
+        alt="err"
+        src={sqr3}
+        className="absolute bottom-0 left-0 lg:w-[200px]  md:w-[150px] w-[100px]"
+      ></img>
+      <img
+        alt="err"
+        src={sqr4}
+        className="absolute bottom-0 right-0 lg:w-[200px]  md:w-[150px] w-[100px]"
+      ></img>
 
-      <img alt="err" src={Book} className="absolute top-20  md:w-[100px] w-[80px] "></img>
+      {/* <img
+        alt="err"
+        src={Book}
+        className="absolute top-20  md:w-[100px] w-[80px] "
+      ></img> */}
       <form className="flex flex-col" onSubmit={handleSubmit}>
-      
-        <h3 className="mx-auto mb-14 font-medium text-4xl">Log in</h3>
+        <h3 className="mx-auto text-4xl font-medium mb-14">Log in</h3>
         <div className="relative">
-        <label className="absolute -top-8 left-2">Email:</label>
-        <input
-          placeholder="  you@example.com"
-          className="field peer  border rounded-xl border-slate-600 "
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          autoComplete="on"
-        />
-        <p className="mt-2 invisible peer-invalid:visible  text-pink-600 text-sm">
-          Please provide a valid email address.
-        </p>
+          <label className="absolute -top-8 left-2">Email:</label>
+          <input
+            placeholder="  you@example.com"
+            className="border field peer rounded-xl border-slate-600 "
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            autoComplete="on"
+          />
+          <p className="invisible mt-2 text-sm text-pink-600 peer-invalid:visible">
+            Please provide a valid email address.
+          </p>
         </div>
 
-       
         <div className="relative mt-10">
-        <label className="absolute -top-8 left-2">Password:</label>
-        <input
-          placeholder="Password@123"
-          className="field   rounded-xl border border-slate-600 "
-          type={visible ? "text" : "password"}
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          autoComplete="on"
-        />
-        {visible ? (<>
-          <VisibilityIcon
-            className="relative -top-10 cursor-pointer"
-            style={{left:"350px"}}
-            onClick={() => setVisible(false)}
+          <label className="absolute -top-8 left-2">Password:</label>
+          <input
+            placeholder="Password@123"
+            className="border field rounded-xl border-slate-600 "
+            type={visible ? "text" : "password"}
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            autoComplete="on"
           />
-         
-          </>
-        ) : (
-          <VisibilityOffIcon
-            className="absolute cursor-pointer right-5 bottom-5"
-
-            onClick={() => setVisible(true)}
-          />
-        )}
-        {error && <div className="mx-auto text-red-600  ">{error}</div>}
-          </div>
+          {visible ? (
+            <>
+              <VisibilityIcon
+                className="absolute cursor-pointer right-5 bottom-5"
+                style={{ left: "350px" }}
+                onClick={() => setVisible(false)}
+              />
+            </>
+          ) : (
+            <VisibilityOffIcon
+              className="absolute cursor-pointer right-5 bottom-5"
+              onClick={() => setVisible(true)}
+            />
+          )}
+          {error && <div className="mx-auto text-red-600 ">{error}</div>}
+        </div>
         <button
           disabled={isLoading}
           className="bg-sky-600 hover:bg-sky-400 rounded-xl mt-10 mx-auto text-white text-xl  md:w-[398px] w-[90vw] h-[58px] "

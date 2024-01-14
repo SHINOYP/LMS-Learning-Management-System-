@@ -13,6 +13,8 @@ const createToken = (_id) => {
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
+
   try {
     const user = await UserModel.login(email, password);
 
@@ -22,8 +24,10 @@ const loginUser = async (req, res) => {
     const name = user.name;
     const avatar = user.avatar;
     const role = user.role;
+    console.log(name, avatar, _id, email, token, role);
     res.status(200).json({ name, avatar, _id, email, token, role });
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -32,15 +36,17 @@ const loginUser = async (req, res) => {
 
 const signUpUser = async (req, res) => {
   const { name, email, password } = req.body;
-
+  console.log(req.body);
   try {
     const user = await UserModel.signup(name, email, password);
-
+    console.log(user);
     //create token
     const token = createToken(user._id);
+    console.log(token);
 
     res.status(200).json({ email, token });
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };

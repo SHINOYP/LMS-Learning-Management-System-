@@ -21,10 +21,10 @@ const Signup = () => {
     setEmail("");
     setName("");
     setPassword("");
-    navigate("/login");
+    // navigate("/login");
   };
   return (
-    <div className="login text-white flex items-center justify-center  overflow-hidden">
+    <div className="flex items-center justify-center overflow-hidden text-white login">
       <img
         alt="err"
         src={sqr}
@@ -46,36 +46,36 @@ const Signup = () => {
         className="absolute bottom-0 right-0 lg:w-[200px]  md:w-[150px] w-[100px]"
       ></img>
       <form className="flex flex-col" onSubmit={handleSubmit}>
-        <h3 className="mx-auto mb-14 font-medium text-4xl">Sign Up</h3>
+        <h3 className="mx-auto text-4xl font-medium mb-14">Sign Up</h3>
         <div className="relative mx-auto">
-          <label className=" mb-2 absolute -top-8 left-2">Username :</label>
+          <label className="absolute mb-2  -top-8 left-2">Username :</label>
           <input
             placeholder="     full name"
-            className="field peer border rounded-xl border-slate-600 "
+            className="border field peer rounded-xl border-slate-600 "
             type="text"
             onChange={(e) => setName(e.target.value)}
             value={name}
           />
         </div>
         <div className="relative mx-auto mt-14">
-          <label className="mt-4 mb-2 absolute -top-12 left-2">Email:</label>
+          <label className="absolute mt-4 mb-2 -top-12 left-2">Email:</label>
           <input
             placeholder="   you@example.com"
-            className="field peer  border rounded-xl border-slate-600 "
+            className="border field peer rounded-xl border-slate-600 "
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             autoComplete="on"
           />
-          <p className="mt-2 invisible peer-invalid:visible  text-pink-600 text-sm">
+          <p className="invisible mt-2 text-sm text-pink-600 peer-invalid:visible">
             Please provide a valid email address.
           </p>
         </div>
         <div className="relative mx-auto mt-8">
-          <label className="mt-4 mb-2 absolute -top-12 left-2">Password</label>
+          <label className="absolute mt-4 mb-2 -top-12 left-2">Password</label>
           <input
             placeholder="  *************"
-            className="field rounded-xl border border-slate-600 "
+            className="border field rounded-xl border-slate-600 "
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -85,16 +85,15 @@ const Signup = () => {
         <button
           disabled={isLoading}
           className="bg-sky-600 mx-auto hover:bg-sky-800 rounded-xl mt-10  text-white text-xl md:w-[398px] w-[90vw] h-[58px]"
-          
         >
           Submit
         </button>
         {error && <div>{error}</div>}
-        <h1 className="mt-6 mx-auto ">
-         -------------------<span className="text-lg">Or</span>
+        <h1 className="mx-auto mt-6 ">
+          -------------------<span className="text-lg">Or</span>
           -------------------
         </h1>
-        <span className="mt-6 mx-auto">
+        <span className="mx-auto mt-6">
           {" "}
           Have an account !{" "}
           <Link to={"/login"} className="text-blue-400">

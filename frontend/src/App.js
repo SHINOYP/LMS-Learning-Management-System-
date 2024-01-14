@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Dashboard from "./pages/Dashboard";
@@ -15,9 +16,11 @@ import Signup from "./pages/Auth/signup";
 
 function App() {
   const { user } = useAuthContext();
-
+  useEffect(() => {
+    localStorage.removeItem("user");
+  }, []);
   return (
-    <div className="  ">
+    <div className="">
       <Routes>
         <Route
           path="/"
