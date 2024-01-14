@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useSignup } from "../../hooks/useSignup";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import sqr from "../../img/sqr.svg";
 import sqr2 from "../../img/sqr2.svg";

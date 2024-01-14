@@ -5,10 +5,8 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import CardHeader from "@mui/material/CardHeader";
 import { DataGrid } from "@mui/x-data-grid";
-import CustomChip from "../utils/chip/index";
 import CustomAvatar from "../utils/avatar/index";
 import QuickSearchToolbar from "../views/QuickSearchToolbar";
-import { getInitials } from "../utils/get-initials";
 import Layout from "../componets/Layout/Layout";
 
 const renderClient = (params) => {
@@ -141,7 +139,6 @@ const TableColumns = () => {
         <CardHeader title="All Users" />
         <DataGrid
           sx={{ height: "90vh", paddingInline: "1rem" }}
-      
           autoHeight
           getRowId={(row) => row._id}
           columns={columns}

@@ -1,5 +1,4 @@
-import React, { useRef,useEffect, useState  } from "react";
-import DashCourseTile from "../componets/DashCourseTile";
+import React, { useEffect, useState } from "react";
 import CourseTiles from "../componets/CourseTiles";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useChapterContext } from "../hooks/useChapterContext";
@@ -9,8 +8,6 @@ import Layout from "../componets/Layout/Layout";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../index.css";
-
-
 
 const Dashboard = () => {
   const { chapters, dispatch } = useChapterContext();
@@ -59,25 +56,25 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col  mx-2 lg:mx-10">
+      <div className="flex flex-col mx-2 lg:mx-10">
         <div>
-          <h1 className="mt-10 md:mt-10 text-gray-500 font-bold  ml-4 ">
+          <h1 className="mt-10 ml-4 font-bold text-gray-500 md:mt-10 ">
             Hello {user.name}, Welcome back{" "}
           </h1>
           <div className="flex -mt-6">
-            <h2 className="text-2xl md:text-4xl ml-4 font-black flex  items-center">
+            <h2 className="flex items-center ml-4 text-2xl font-black md:text-4xl">
               Your DashBoard Today
             </h2>
             <img
               src={hand}
-              className="w-16 mb-10 ml-0  md:mb-6"
+              className="w-16 mb-10 ml-0 md:mb-6"
               alt="not found"
             />{" "}
           </div>
         </div>
         <div className="my-1 md:my-6">
-          <h2 className="ml-4 my-4 text-xl font-bold">Overview</h2>
-          <div className="flex justify-start flex md:hidden ">
+          <h2 className="my-4 ml-4 text-xl font-bold">Overview</h2>
+          <div className="flex justify-start md:hidden ">
             <Slider
               dots={false}
               slidesToShow={1}
@@ -114,7 +111,7 @@ const Dashboard = () => {
         </div>
 
         <div>
-          <h2 className="ml-4  mt-6 text-xl font-bold">
+          <h2 className="mt-6 ml-4 text-xl font-bold">
             {user.role === "Admin" ? "Your Courses" : "All Courses"}
           </h2>
           <div className="flex border rounded-xl flex-wrap  ml-0 md:-ml-6 w-full md:w-[85vw]">

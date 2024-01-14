@@ -1,9 +1,5 @@
-import { height } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import Banner from "../img/Banner.jpg";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
-import AddIcon from "@mui/icons-material/Add";
 import Popup from "../componets/profile/addNewProfile";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import profileBg from "../img/pfbg.PNG";
@@ -20,9 +16,9 @@ import { BallTriangle } from "react-loader-spinner";
 const Profile = () => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [file, setFile] = useState(null);
-  const { user,dispatch } = useAuthContext();
+  const { user, dispatch } = useAuthContext();
   const [loading, setLoading] = useState(false);
-  const [update,setUpdate]=useState()
+  const [update, setUpdate] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,30 +45,29 @@ const Profile = () => {
         showConfirmButton: false,
         timer: 2000,
       });
-       //save the user to local storage
-       localStorage.setItem("user", JSON.stringify(json));
+      //save the user to local storage
+      localStorage.setItem("user", JSON.stringify(json));
 
-       //update authcontext
-       dispatch({ type: "LOGIN", payload: json });
+      //update authcontext
+      dispatch({ type: "LOGIN", payload: json });
     }
-    if(!response.ok){
-      setLoading(false)
+    if (!response.ok) {
+      setLoading(false);
       Swal.fire({
         position: "center",
         icon: "error",
         title: "Something went wrong",
         showConfirmButton: false,
         timer: 2000,
-      })
-    
+      });
     }
   };
-  
-  console.log(update)
+
+  console.log(update);
   return (
-    <div className="bg-white h-screen w-screen ">
+    <div className="w-screen h-screen bg-white ">
       <div className="relative ">
-        <div className="flex flex-col relative">
+        <div className="relative flex flex-col">
           <Link to="/Dashboard" className="sticky top-0">
             {" "}
             <ArrowBackIcon
@@ -80,15 +75,12 @@ const Profile = () => {
               style={{ color: "white", fontSize: "50px" }}
             />
           </Link>
-          <div className="flex bg-gray-500 w-full md:h-96 h-40">
-            <h1 className="text-white mx-auto my-auto mt-60  font-black text-2xl">
+          <div className="flex w-full h-40 bg-gray-500 md:h-96">
+            <h1 className="mx-auto my-auto text-2xl font-black text-white mt-60">
               {user.role === "Admin" ? "Hi your are an Admin !" : "hi "}
             </h1>
           </div>
-          <div
-            className="mx-auto relative  profilecrl "
-            
-          >
+          <div className="relative mx-auto profilecrl ">
             <button onClick={() => setButtonPopup(true)}>
               <i>
                 <CameraAltIcon />{" "}
@@ -97,19 +89,21 @@ const Profile = () => {
               <img
                 src={user.avatar}
                 alt=""
-                className="md:ring-8 ring-2 ring-slate-800 dark:ring-slate-800 md:w-56  w-32 flex h-32 md:h-56 rounded-full"
+                className="flex w-32 h-32 rounded-full md:ring-8 ring-2 ring-slate-800 dark:ring-slate-800 md:w-56 md:h-56"
               />
             </button>
-            <h1 className="md:ml-14  ml-4 text-xl md:text-4xl md:mt-56  mt-28 font-bold">{user.name}</h1>
+            <h1 className="ml-4 text-xl font-bold md:ml-14 md:text-4xl md:mt-56 mt-28">
+              {user.name}
+            </h1>
           </div>
           <img
             src={profileBg}
             alt=""
-            className="w-96 right-0  top-96 hidden md:flex absolute"
+            className="absolute right-0 hidden w-96 top-96 md:flex"
           />
         </div>
       </div>
-      <div className="flex flex-col w-3/4  m-6 ">
+      <div className="flex flex-col w-3/4 m-6 ">
         <Accordion className="my-2 bg-black" style={{ background: "#abdbe3" }}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -119,12 +113,12 @@ const Profile = () => {
           >
             <Typography>
               {" "}
-              <h1 className=" font-black">User Name</h1>
+              <h1 className="font-black ">User Name</h1>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              <h1 className=" font-black text-lg">{user.name}</h1>
+              <h1 className="text-lg font-black ">{user.name}</h1>
               <br />
               The name field is a space provided for users to enter their given
               name or preferred name. It is commonly used as a form of
@@ -142,12 +136,12 @@ const Profile = () => {
           >
             <Typography>
               {" "}
-              <h1 className=" font-black">User Email</h1>
+              <h1 className="font-black ">User Email</h1>
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              <h1 className=" font-black text-lg">{user.email}</h1>
+              <h1 className="text-lg font-black ">{user.email}</h1>
               <br />
               An email field is a text input area on a form or webpage that
               allows the user to enter their email address
@@ -168,15 +162,15 @@ const Profile = () => {
               wrapperStyle=""
               visible={true}
             />
-            <h1 className="text-xl font-black my-10 text-green-800">
+            <h1 className="my-10 text-xl font-black text-green-800">
               Updating..
             </h1>
           </div>
         ) : (
-          <div className=" flex flex-col items-center justify-center ">
+          <div className="flex flex-col items-center justify-center ">
             <form onSubmit={handleSubmit} encType="multipart/form-data">
               <div className="flex items-center justify-center bg-grey-lighter">
-                <label className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+                <label className="flex flex-col items-center w-64 px-4 py-6 tracking-wide uppercase bg-white border rounded-lg shadow-lg cursor-pointer text-blue border-blue hover:bg-blue hover:text-white">
                   <svg
                     className="w-8 h-8"
                     fill="currentColor"
