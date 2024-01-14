@@ -18,7 +18,7 @@
  Image upload- Cloudinary
 
 NOTE📝 :
- By default all new signup user role is set to "Student", if u want to see admin features like course created, you have to set a user role to "Admin" in the db collection mannually and login after that with that mail id, password
+ By default all new signup user role is set to "Student", if u want to see admin features like course creation etc.., you have to set a user role to "Admin" in the db collection mannually and login after that with that mail id, password
 
 
  
