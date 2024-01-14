@@ -17,7 +17,9 @@
  Socket io,
  Image upload- Cloudinary
 
+NOTE📝 :
+ By deault all new signup user role is set to "Student", if u want to see admin features like course created, you have to set a user role to "Admin" in the db collection mannually and login after that with that mail id, password
+
+
  
  Nb: This is my first project so ui is not perfect🙌
-
- By deault all new signup user role is set to "Student", if u want to see admin features like course created, you have to set a user role to "Admin" in the db collection mannually and login after that with that mail id, password
